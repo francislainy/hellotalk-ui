@@ -1,0 +1,38 @@
+/* ChatItem.css */
+.message, .reply {
+    display: flex;
+    align-items: flex-start;
+    max-width: 80%;
+    margin: 10px 0;
+}
+
+.text {
+    padding: 10px;
+    border-radius: 20px;
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+.message {
+    flex-direction: row;
+}
+
+.message .text {
+    background-color: #f0f0f0;
+    margin-left: 10px;
+}
+
+.reply {
+    flex-direction: row-reverse;
+}
+
+.reply .text {
+    background-color: #d1c4e9;
+    margin-right: 10px;
+    margin-left: 0;
+}
+
+.avatar {
+    width: 20px;
+    height: 20px;
+}

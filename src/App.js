@@ -1,4 +1,4 @@
-import Home from './components/Home';
+import Home from './screen/Home';
 import Navigation from './navigation/Navigation';
 
 function App() {

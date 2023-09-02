@@ -5,6 +5,7 @@ const About = () => {
   
   return (
     <div>
+      <h1>Live</h1>
       {items.map((item, index) => (
         <p key={index}>{item}</p>
       ))}

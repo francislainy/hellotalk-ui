@@ -1,5 +1,5 @@
 import React from 'react';
-import avatarImage from "../images/avatar.png";
+import avatarImage from "../../images/avatar.png";
 import { Avatar, Box, Typography } from "@mui/material";
 import './ChatItem.css';
 

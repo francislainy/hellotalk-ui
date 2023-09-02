@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import {Avatar, List, ListItem, ListItemAvatar, ListItemText} from '@mui/material';
-import avatarImage from '../images/avatar.png'
-import ChatDetails from "./ChatDetails";
+import avatarImage from '../../images/avatar.png'
+import ChatDetails from "../ChatDetails/ChatDetails";
 
 const ChatInterface = () => {
     // Assuming you have a list of chat data

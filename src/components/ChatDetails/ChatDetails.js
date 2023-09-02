@@ -1,5 +1,5 @@
 import React from 'react';
-import ChatItem from './ChatItem';
+import ChatItem from '../ChatItem/ChatItem';
 
 const ChatDetails = ({ chat }) => {
     const messages = [

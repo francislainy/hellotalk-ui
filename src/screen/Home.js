@@ -1,5 +1,5 @@
 import React from 'react';
-import ChatInterface from "../components/Chat";
+import ChatInterface from "../components/Chat/Chat";
 import { TextField, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 

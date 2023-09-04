@@ -1,5 +1,5 @@
 import React from 'react';
-import {Avatar, ListItemText, Typography} from "@mui/material";
+import {Avatar, Typography, Grid, Box} from "@mui/material";
 import avatarImage from "../../images/avatar.png";
 
 const User = () => {
@@ -10,23 +10,28 @@ const User = () => {
     };
 
     return (
-        <div style={{display: 'flex', alignItems: 'center'}}>
-            <Avatar alt={chat.name} src={avatarImage} sx={{width: 60, height: 60}}/>
-            <div>
-                <ListItemText
-                    primary={<Typography variant="body1" sx={{fontWeight: 'bold'}}>{chat.name}</Typography>}
-                    sx={{fontSize: '2.5em'}}
-                />
-                <ListItemText
-                    secondary={chat.latestMessage}
-                    sx={{fontSize: '2.5em'}} 
-                />
-                <ListItemText
-                    secondary="Another line of text"
-                    sx={{fontSize: '2.5em'}} 
-                />
-            </div>
-        </div>
+        <Box display="flex" justifyContent="center">
+            <Grid container spacing={2} alignItems="center">
+                <Grid item>
+                    <Avatar alt={chat.name} src={avatarImage} sx={{width: 60, height: 60, border: '2px solid #3f51b5'}}/>
+                </Grid>
+                <Grid item xs={12} sm container>
+                    <Grid item xs container direction="column" spacing={2}>
+                        <Grid item xs>
+                            <Typography variant="subtitle1" gutterBottom sx={{lineHeight: 1}}>
+                                {chat.name}
+                            </Typography>
+                            <Typography variant="body2" gutterBottom sx={{lineHeight: 1}}>
+                                {chat.latestMessage}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary" sx={{lineHeight: 1}}>
+                                Another line of text
+                            </Typography>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Box>
     );
 }
 

@@ -16,10 +16,10 @@ const User = () => {
                     <Typography variant="subtitle1" gutterBottom sx={{ lineHeight: 1.2, color: '#7B1FA2', fontWeight: 'bold', textAlign: 'center', fontSize: '30px' }}>
                         {chat.name}
                     </Typography>
-                    <Typography variant="body2" gutterBottom sx={{ lineHeight: 1.2, color: '#00000099', fontWeight: 'bold', textAlign: 'center' }}>
+                    <Typography variant="body2" gutterBottom sx={{ lineHeight: 1.2, color: '#000000DB', fontWeight: 'bold', textAlign: 'center' }}>
                         {chat.latestMessage}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.2, color: '#00000099', fontWeight: 'bold', textAlign: 'center' }}>
+                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.2, color: '#000000DB', fontWeight: 'bold', textAlign: 'center' }}>
                         Another line of text
                     </Typography>
                 </Box>

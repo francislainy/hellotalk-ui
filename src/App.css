@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  background-color: #f5f5f5; /* light gray */
+  min-height: 100vh;
 }
 
 .App-logo {

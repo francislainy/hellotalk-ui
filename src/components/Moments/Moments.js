@@ -34,8 +34,9 @@ const Moments = () => {
                     <Button
                         key={button}
                         variant="contained"
-                        className="buttonStyle"
+                        sx={{color: '#fff', backgroundColor: '#7B1FA2'}}
                         onClick={() => setCurrentComponent(button)}
+                        TouchRippleProps={{ style: { color: '#7B1FA2' } }}
                     >
                         {button}
                     </Button>

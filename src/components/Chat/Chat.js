@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
-import {Avatar, List, ListItem, ListItemAvatar, ListItemText} from '@mui/material';
+import {Avatar, Button, List, ListItem, ListItemAvatar, ListItemText, TextField} from '@mui/material';
 import avatarImage from '../../images/avatar.png'
 import ChatDetails from "../ChatDetails/ChatDetails";
 
 const ChatInterface = () => {
     // Assuming you have a list of chat data
     const [selectedChat, setSelectedChat] = useState(0); // State to keep track of the selected chat item
+    const [newMessage, setNewMessage] = useState(''); // State to keep track of the new message
 
     const chats = [
         {
@@ -28,6 +29,16 @@ const ChatInterface = () => {
 
     const handleChatItemClick = (index) => {
         setSelectedChat(index);
+    };
+
+    const handleNewMessageChange = (event) => {
+        setNewMessage(event.target.value);
+    };
+
+    const handleNewMessageSubmit = (event) => {
+        event.preventDefault();
+        // Here you can handle the submission of the new message
+        // For example, you can add it to the selected chat's messages
     };
 
     return (
@@ -53,6 +64,28 @@ const ChatInterface = () => {
             </List>
             <div style={{flex: 2, marginLeft: '60px'}}>
                 <ChatDetails chat={chats[selectedChat]}/>
+                <form onSubmit={handleNewMessageSubmit} sx={{marginTop: 2}}>
+                    <TextField
+                        value={newMessage}
+                        onChange={handleNewMessageChange}
+                        label="New Message"
+                        variant="outlined"
+                        sx={{width: '75%', marginBottom: 2}}
+                    />
+                    <Button
+                        type="submit"
+                        variant="contained"
+                        sx={{
+                            marginLeft: 1,
+                            backgroundColor: '#7B1FA2',
+                            '&:hover': {
+                                backgroundColor: '#5a0f73', // darker shade for hover effect
+                            }
+                        }}
+                    >
+                        Send
+                    </Button>
+                </form>
             </div>
         </div>
     );

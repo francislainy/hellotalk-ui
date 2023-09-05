@@ -1,5 +1,5 @@
 import React from 'react';
-import {Avatar, Typography, Grid, Box} from "@mui/material";
+import { Avatar, Typography, Box } from "@mui/material";
 import avatarImage from "../../images/avatar.png";
 
 const User = () => {
@@ -10,27 +10,25 @@ const User = () => {
     };
 
     return (
-        <Box display="flex" justifyContent="center">
-            <Grid container spacing={2} alignItems="center">
-                <Grid item>
-                    <Avatar alt={chat.name} src={avatarImage} sx={{width: 60, height: 60, border: '2px solid #3f51b5'}}/>
-                </Grid>
-                <Grid item xs={12} sm container>
-                    <Grid item xs container direction="column" spacing={2}>
-                        <Grid item xs>
-                            <Typography variant="subtitle1" gutterBottom sx={{lineHeight: 1}}>
-                                {chat.name}
-                            </Typography>
-                            <Typography variant="body2" gutterBottom sx={{lineHeight: 1}}>
-                                {chat.latestMessage}
-                            </Typography>
-                            <Typography variant="body2" color="text.secondary" sx={{lineHeight: 1}}>
-                                Another line of text
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                </Grid>
-            </Grid>
+        <Box display="flex" flexDirection="column" alignItems="center" width="100%">
+            <Box width="100%" height={200} bgcolor="#f0f0f0" position="relative">
+                <Box position="absolute" bottom={100} left="50%" style={{ transform: 'translateX(-50%)' }}>
+                    <Typography variant="subtitle1" gutterBottom sx={{ lineHeight: 1.2, color: '#7B1FA2', fontWeight: 'bold', textAlign: 'center', fontSize: '30px' }}>
+                        {chat.name}
+                    </Typography>
+                    <Typography variant="body2" gutterBottom sx={{ lineHeight: 1.2, color: '#00000099', fontWeight: 'bold', textAlign: 'center' }}>
+                        {chat.latestMessage}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.2, color: '#00000099', fontWeight: 'bold', textAlign: 'center' }}>
+                        Another line of text
+                    </Typography>
+                </Box>
+                <Avatar
+                    alt={chat.name}
+                    src={avatarImage}
+                    sx={{ width: 130, height: 130, border: '2px solid #7B1FA2', position: 'absolute', bottom: -40, left: '50%', transform: 'translateX(-50%)' }}
+                />
+            </Box>
         </Box>
     );
 }

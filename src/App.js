@@ -1,5 +1,6 @@
 import Navigation from './navigation/Navigation';
 import './App.css'
+import './index.css';
 
 function App() {
   return (

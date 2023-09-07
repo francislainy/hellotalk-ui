@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Box, Button, List} from "@mui/material";
 import './Moments.css';
+import colors from '../colors';
 
 import Recent from './Recent';
 import Best from './Best';
@@ -35,6 +36,7 @@ const Moments = () => {
                 avatar: 'url_to_avatar_image',
             },
             content: 'This is a moment from user 1',
+            id: '1',
         },
         {
             user: {
@@ -42,6 +44,7 @@ const Moments = () => {
                 avatar: 'url_to_avatar_image',
             },
             content: 'This is another moment from user 2',
+            id: '2'
         },
         // Add more moments here...
     ];
@@ -53,7 +56,7 @@ const Moments = () => {
                     <Button
                         key={button}
                         variant="contained"
-                        sx={{color: '#fff', backgroundColor: '#7B1FA2'}}
+                        sx={{color: colors.white, backgroundColor: colors.primary}}
                         onClick={() => setCurrentComponent(button)}
                         TouchRippleProps={{ style: { color: '#7B1FA2' } }}
                     >
@@ -67,7 +70,7 @@ const Moments = () => {
             <Box>
                 <List>
                     {moments.map((moment, index) => (
-                        <MomentItem key={index} moment={moment} />
+                        <MomentItem key={index} moment={moment} index={moment.id} />
                     ))}
                 </List>
             </Box>

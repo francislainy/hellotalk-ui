@@ -1,5 +1,6 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import MomentDetail from '../components/MomentDetail';
 import Home from '../screen/HomeScreen';
 import Connect from '../screen/ConnectScreen';
 import Live from '../screen/LiveScreen';
@@ -17,6 +18,7 @@ const Navigation = () => {
                 <Route path="/live" element={<Live/>}/>
                 <Route path="/me" element={<Me/>}/>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/moment-detail/:id" element={<MomentDetail />} />
             </Routes>
         </Router>
     );

@@ -13,7 +13,6 @@ const MomentItem = ({moment, index}) => {
         navigate(`/moment-detail/${index}`);
     };
 
-
     return (
         <div onClick={handleClick}>
             <Card sx={{marginBottom: 2}}>

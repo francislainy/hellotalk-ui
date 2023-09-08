@@ -1,8 +1,12 @@
 import React from "react";
+import UnderConstruction from "../UnderConstruction";
 
 const Nearby = () => {
     return (
-        <div><h1>Nearby</h1></div>
+        <div>
+            <h1>Nearby</h1>
+            <UnderConstruction/>
+        </div>
     );
 };
 

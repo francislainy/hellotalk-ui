@@ -1,8 +1,12 @@
 import React from "react";
+import UnderConstruction from "../UnderConstruction";
 
 const Learn = () => {
     return (
-        <div><h1>Learn</h1></div>
+        <div>
+            <h1>Learn</h1>
+            <UnderConstruction/>
+        </div>
     );
 };
 

@@ -1,16 +1,14 @@
 import React from 'react';
+import UnderConstruction from "../components/UnderConstruction";
 
-const About = () => {
-  const items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
-  
-  return (
-    <div>
-      <h1>Connect</h1>
-      {items.map((item, index) => (
-        <p key={index}>{item}</p>
-      ))}
-    </div>
-  );
+const Connect = () => {
+
+    return (
+        <div>
+            <h1>Connect</h1>
+            <UnderConstruction/>
+        </div>
+    );
 }
 
-export default About;
+export default Connect;

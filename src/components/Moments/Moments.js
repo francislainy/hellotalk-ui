@@ -1,7 +1,8 @@
 import React, {useState} from 'react';
-import {Box, Button, List} from "@mui/material";
+import {Box, Button, Fab, List} from "@mui/material";
 import './Moments.css';
 import colors from '../colors';
+import AddIcon from '@mui/icons-material/Add';
 
 import Recent from './Recent';
 import Best from './Best';
@@ -12,6 +13,7 @@ import Help from './Help';
 import Classmates from './Classmates';
 import Voice from './Voice';
 import MomentItem from "./MomentItem";
+import {useNavigate} from "react-router-dom";
 
 const componentMap = {
     Recent: Recent,
@@ -28,6 +30,7 @@ const buttons = ['Recent', 'Best', 'Learn', 'Nearby', 'Following', 'Help', 'Clas
 
 const Moments = () => {
     const [currentComponent, setCurrentComponent] = useState('Recent');
+    const navigate = useNavigate();
 
     const moments = [
         {
@@ -74,6 +77,21 @@ const Moments = () => {
                     ))}
                 </List>
             </Box>
+            <Fab
+                aria-label="add"
+                sx={{
+                    position: 'fixed',
+                    bottom: 16,
+                    right: 16,
+                    backgroundColor: colors.replyBackground,
+                    '&:hover': {
+                        backgroundColor: colors.primary, // replace with your hover color
+                    }
+                }}
+                onClick={() => navigate('/moments/add')}
+            >
+                <AddIcon />
+            </Fab>
         </Box>
 
     );

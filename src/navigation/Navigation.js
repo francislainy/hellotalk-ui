@@ -7,6 +7,7 @@ import Live from '../screen/LiveScreen';
 import Me from '../screen/MeScreen';
 import Moments from '../screen/MomentsScreen';
 import CustomAppBar from "../components/AppBar";
+import AddMoment from "../components/AddMoment";
 
 const Navigation = () => {
     return (
@@ -19,6 +20,7 @@ const Navigation = () => {
                 <Route path="/me" element={<Me/>}/>
                 <Route path="/" element={<Home/>}/>
                 <Route path="/moment-detail/:id" element={<MomentDetail />} />
+                <Route path="/moments/add" element={<AddMoment />} />
             </Routes>
         </Router>
     );

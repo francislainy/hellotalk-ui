@@ -1,12 +1,19 @@
 import React, { useState } from 'react';
 import { Button, TextField, Box } from '@mui/material';
 import colors from "./colors";
+import {createMoment} from "../api";
 
 const AddMoment = () => {
     const [text, setText] = useState('');
 
     const handleSend = () => {
-        // Handle sending the moment here...
+        createMoment(text)
+            .then(response => {
+                // Handle the response here...
+            })
+            .catch(error => {
+                // Handle the error here...
+            });
     };
 
     return (

@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Avatar, Button, List, ListItem, ListItemAvatar, ListItemText, TextField} from '@mui/material';
 import avatarImage from '../../images/avatar.png'
 import ChatDetails from "../ChatDetails/ChatDetails";
+import colors from "../colors";
 
 const ChatInterface = () => {
     // Assuming you have a list of chat data
@@ -77,9 +78,9 @@ const ChatInterface = () => {
                         variant="contained"
                         sx={{
                             marginLeft: 1,
-                            backgroundColor: '#7B1FA2',
+                            backgroundColor: colors.primary,
                             '&:hover': {
-                                backgroundColor: '#5a0f73', // darker shade for hover effect
+                                backgroundColor: colors.darkPurple, // darker shade for hover effect
                             }
                         }}
                     >

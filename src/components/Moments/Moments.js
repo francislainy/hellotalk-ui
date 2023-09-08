@@ -83,9 +83,9 @@ const Moments = () => {
                     position: 'fixed',
                     bottom: 16,
                     right: 16,
-                    backgroundColor: colors.replyBackground,
+                    backgroundColor: colors.primary,
                     '&:hover': {
-                        backgroundColor: colors.primary, // replace with your hover color
+                        backgroundColor: colors.darkPurple, // replace with your hover color
                     }
                 }}
                 onClick={() => navigate('/moments/add')}

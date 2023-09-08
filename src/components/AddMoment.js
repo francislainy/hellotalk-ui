@@ -2,14 +2,17 @@ import React, { useState } from 'react';
 import { Button, TextField, Box } from '@mui/material';
 import colors from "./colors";
 import {createMoment} from "../api";
+import { useNavigate } from 'react-router-dom';
 
 const AddMoment = () => {
     const [text, setText] = useState('');
+    const navigate = useNavigate();
 
     const handleSend = () => {
         createMoment(text)
             .then(response => {
-                // Handle the response here...
+                setText(''); // Clear the text area
+                navigate('/moments'); // Redirect to /moments
             })
             .catch(error => {
                 // Handle the error here...
@@ -34,7 +37,7 @@ const AddMoment = () => {
                 sx={{
                     backgroundColor: colors.primary,
                     '&:hover': {
-                        backgroundColor: colors.primary, // replace with your hover color
+                        backgroundColor: colors.darkPurple, // replace with your hover color
                     }
                 }}
             >

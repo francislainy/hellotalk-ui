@@ -1,13 +1,13 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import MomentDetail from '../components/MomentDetail';
+import MomentDetail from '../components/Moments/MomentDetail';
 import Home from '../screen/HomeScreen';
 import Connect from '../screen/ConnectScreen';
 import Live from '../screen/LiveScreen';
 import Me from '../screen/MeScreen';
 import Moments from '../screen/MomentsScreen';
 import CustomAppBar from "../components/AppBar";
-import AddMoment from "../components/AddMoment";
+import AddMoment from "../components/Moments/AddMoment";
 
 const Navigation = () => {
     return (

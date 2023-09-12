@@ -4,8 +4,8 @@ import {useParams} from 'react-router-dom';
 import {Box, Avatar, Typography, Card, CardContent} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
-import avatarImage from '../images/avatar.png'; // Keep the hardcoded avatar image
-import colors from "./colors";
+import avatarImage from '../../images/avatar.png'; // Keep the hardcoded avatar image
+import colors from "../colors";
 
 const MomentDetail = () => {
     const {id} = useParams();

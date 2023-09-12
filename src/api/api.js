@@ -24,3 +24,7 @@ export const getMoment = (id) => {
 export const getCommentsForMoment = (id) => {
     return api.get(`moments/${id}/comments/`);
 };
+
+export const deleteMoment = (id) => {
+    return api.delete(`moments/${id}/`);
+};

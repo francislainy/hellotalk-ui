@@ -18,17 +18,17 @@ const MomentDetail = () => {
     const [isEditing, setIsEditing] = useState(false);
     const [updatedContent, setUpdatedContent] = useState(moment.content);
 
+    const fetchMoment = async () => {
+        try {
+            const response = await getMoment(id);
+            setMoment(response.data);
+            setUpdatedContent(response.data.content); // Set updatedContent here
+        } catch (error) {
+            alert(error)
+        }
+    };
+    
     useEffect(() => {
-        const fetchMoment = async () => {
-            try {
-                const response = await getMoment(id);
-                setMoment(response.data);
-                setUpdatedContent(response.data.content); // Set updatedContent here
-            } catch (error) {
-                alert(error)
-            }
-        };
-
         fetchMoment();
     }, []);
 
@@ -64,6 +64,7 @@ const MomentDetail = () => {
         try {
             await updateMoment(id, updatedContent);
             setIsEditing(false);
+            fetchMoment();
         } catch (error) {
             alert(error);
         }

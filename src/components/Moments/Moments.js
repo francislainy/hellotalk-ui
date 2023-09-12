@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {Box, Button, Fab, List} from "@mui/material";
+import React, { useEffect, useState } from 'react';
+import { Box, Button, Fab, List } from "@mui/material";
 import './Moments.css';
 import colors from '../colors';
 import AddIcon from '@mui/icons-material/Add';
@@ -13,7 +13,8 @@ import Help from './Help';
 import Classmates from './Classmates';
 import Voice from './Voice';
 import MomentItem from "./MomentItem";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { getMoments } from "../../api/api";
 
 const componentMap = {
     Recent: Recent,
@@ -30,36 +31,31 @@ const buttons = ['Recent', 'Best', 'Learn', 'Nearby', 'Following', 'Help', 'Clas
 
 const Moments = () => {
     const [currentComponent, setCurrentComponent] = useState('Recent');
+    const [moments, setMoments] = useState([])
     const navigate = useNavigate();
 
-    const moments = [
-        {
-            user: {
-                name: 'User 1',
-                avatar: 'url_to_avatar_image',
-            },
-            content: 'This is a moment from user 1',
-            id: '1',
-        },
-        {
-            user: {
-                name: 'User 2',
-                avatar: 'url_to_avatar_image',
-            },
-            content: 'This is another moment from user 2',
-            id: '2'
-        },
-        // Add more moments here...
-    ];
+
+    useEffect(() => {
+        const fetchMoments = async () => {
+            try {
+                const response = await getMoments();
+                setMoments(response.data);
+            } catch (error) {
+                alert(error)
+            }
+        };
+
+        fetchMoments();
+    }, []);
 
     return (
-        <Box sx={{display: 'grid', justifyContent: 'center', marginTop: '20px'}}>
-            <Box sx={{'& > :not(style)': {m: 1}, display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+        <Box sx={{ display: 'grid', justifyContent: 'center', marginTop: '20px' }}>
+            <Box sx={{ '& > :not(style)': { m: 1 }, display: 'flex', justifyContent: 'center', flexWrap: 'wrap' }}>
                 {buttons.map((button) => (
                     <Button
                         key={button}
                         variant="contained"
-                        sx={{color: colors.white, backgroundColor: colors.primary}}
+                        sx={{ color: colors.white, backgroundColor: colors.primary }}
                         onClick={() => setCurrentComponent(button)}
                         TouchRippleProps={{ style: { color: '#7B1FA2' } }}
                     >
@@ -67,7 +63,7 @@ const Moments = () => {
                     </Button>
                 ))}
             </Box>
-            <Box sx={{maxWidth: 'fit-content', width: '100%', alignSelf: 'start'}}>
+            <Box sx={{ maxWidth: 'fit-content', width: '100%', alignSelf: 'start' }}>
                 {currentComponent && React.createElement(componentMap[currentComponent])}
             </Box>
             <Box>

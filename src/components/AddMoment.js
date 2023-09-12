@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, TextField, Box } from '@mui/material';
 import colors from "./colors";
-import {createMoment} from "../api";
+import {createMoment} from "../api/api";
 import { useNavigate } from 'react-router-dom';
 
 const AddMoment = () => {

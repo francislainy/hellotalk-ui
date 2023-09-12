@@ -12,3 +12,7 @@ const api = axios.create({
 export const createMoment = (content) => {
     return api.post('moments/', { content });
 };
+
+export const getMoments = () => {
+    return api.get('moments/');
+};

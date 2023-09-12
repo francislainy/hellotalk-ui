@@ -18,10 +18,10 @@ const MomentItem = ({moment, index}) => {
             <Card sx={{marginBottom: 2}}>
                 <CardContent>
                     <Box sx={{display: 'flex', alignItems: 'center'}}>
-                        <Avatar alt={moment.user.name} src={avatarImage}/>
+                        <Avatar alt={moment.userId} src={avatarImage}/>
                         <Box sx={{marginLeft: 2}}>
-                            <Typography variant="subtitle1">{moment.user.name}</Typography>
-                            <Typography variant="body2" color="textSecondary">{moment.user.info}</Typography>
+                            <Typography variant="subtitle1">{moment.userId}</Typography>
+                            <Typography variant="body2" color="textSecondary">{moment.userId}</Typography>
                         </Box>
                     </Box>
                     <Typography variant="body1">{moment.content}</Typography>

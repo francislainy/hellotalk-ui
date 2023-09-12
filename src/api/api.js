@@ -28,3 +28,7 @@ export const getCommentsForMoment = (id) => {
 export const deleteMoment = (id) => {
     return api.delete(`moments/${id}/`);
 };
+
+export const updateMoment = (id, content) => {
+    return api.put(`moments/${id}/`, { content });
+};

@@ -18,5 +18,9 @@ export const getMoments = () => {
 };
 
 export const getMoment = (id) => {
-    return api.get(`moments/${id}`);
+    return api.get(`moments/${id}/`);
+};
+
+export const getCommentsForMoment = (id) => {
+    return api.get(`moments/${id}/comments/`);
 };

@@ -1,4 +1,3 @@
-// src/components/MomentDetail.js
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import {Avatar, Box, Card, CardContent, Typography} from '@mui/material';
@@ -6,11 +5,12 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import avatarImage from '../../images/avatar.png'; // Keep the hardcoded avatar image
 import colors from "../colors";
-import {getMoment} from "../../api/api";
+import {getCommentsForMoment, getMoment} from "../../api/api";
 
 const MomentDetail = () => {
     const {id} = useParams();
-    const [moment, setMoment] = useState([])
+    const [moment, setMoment] = useState({})
+    const [comments, setComments] = useState([])
 
     useEffect(() => {
         const fetchMoment = async () => {
@@ -25,25 +25,18 @@ const MomentDetail = () => {
         fetchMoment();
     }, []);
 
+    useEffect(() => {
+        const fetchComments = async () => {
+            try {
+                const response = await getCommentsForMoment(id);
+                setComments(response.data);
+            } catch (error) {
+                alert(error)
+            }
+        };
 
-    // Replace with your actual comments data
-    const comments = [
-        {
-            user: {
-                name: 'User 1',
-                avatar: avatarImage, // Use the hardcoded avatar image
-            },
-            text: 'This is a comment from user 1',
-        },
-        {
-            user: {
-                name: 'User 2',
-                avatar: avatarImage, // Use the hardcoded avatar image
-            },
-            text: 'This is another comment from user 2',
-        },
-    ];
-
+        fetchComments();
+    }, []);
 
     return (
         <Box sx={{display: 'flex', justifyContent: 'center', height: '100vh'}}>
@@ -63,12 +56,13 @@ const MomentDetail = () => {
                         </Card>
                         <Box sx={{width: '100%'}}>
                             {comments.map((comment, index) => (
-                                <Card key={index} sx={{backgroundColor: colors.chatItemBackground, mt: 2, boxShadow: 'none'}}>
+                                <Card key={index}
+                                      sx={{backgroundColor: colors.chatItemBackground, mt: 2, boxShadow: 'none'}}>
                                     <Box sx={{display: 'flex', alignItems: 'center', p: 2}}>
-                                        <Avatar src={comment.user.avatar}/>
+                                        <Avatar src={avatarImage}/>
                                         <Box sx={{ml: 2}}>
                                             <Typography variant="subtitle2">{comment.user.name}</Typography>
-                                            <Typography variant="body2">{comment.text}</Typography>
+                                            <Typography variant="body2">{comment.content}</Typography>
                                         </Box>
                                     </Box>
                                 </Card>

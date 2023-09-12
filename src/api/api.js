@@ -16,3 +16,7 @@ export const createMoment = (content) => {
 export const getMoments = () => {
     return api.get('moments/');
 };
+
+export const getMoment = (id) => {
+    return api.get(`moments/${id}`);
+};

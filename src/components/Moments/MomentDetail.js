@@ -1,22 +1,30 @@
 // src/components/MomentDetail.js
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import {Box, Avatar, Typography, Card, CardContent} from '@mui/material';
+import {Avatar, Box, Card, CardContent, Typography} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import avatarImage from '../../images/avatar.png'; // Keep the hardcoded avatar image
 import colors from "../colors";
+import {getMoment} from "../../api/api";
 
 const MomentDetail = () => {
     const {id} = useParams();
+    const [moment, setMoment] = useState([])
 
-    // Replace with your actual moment data
-    const moment = {
-        id: 1,
-        content: 'This is a moment',
-        likes: 10,
-        comments: 2,
-    };
+    useEffect(() => {
+        const fetchMoment = async () => {
+            try {
+                const response = await getMoment(id);
+                setMoment(response.data);
+            } catch (error) {
+                alert(error)
+            }
+        };
+
+        fetchMoment();
+    }, []);
+
 
     // Replace with your actual comments data
     const comments = [

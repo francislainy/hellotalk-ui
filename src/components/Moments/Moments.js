@@ -34,7 +34,6 @@ const Moments = () => {
     const [moments, setMoments] = useState([])
     const navigate = useNavigate();
 
-
     useEffect(() => {
         const fetchMoments = async () => {
             try {

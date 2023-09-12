@@ -42,11 +42,13 @@ const MomentDetail = () => {
     }, []);
 
     const handleDelete = async () => {
-        try {
-            await deleteMoment(id);
-            navigate('/moments'); // Redirect to /moments
-        } catch (error) {
-            alert(error);
+        if (window.confirm('Are you sure you want to delete this moment?')) {
+            try {
+                await deleteMoment(id);
+                navigate('/moments'); // Redirect to /moments
+            } catch (error) {
+                alert(error);
+            }
         }
     };
 

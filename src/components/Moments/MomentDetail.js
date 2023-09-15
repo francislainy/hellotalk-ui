@@ -1,8 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import {Box, Button, Card, CardContent, TextField, Typography} from '@mui/material';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import CommentIcon from '@mui/icons-material/Comment';
+import {Box, Card, CardContent} from '@mui/material';
 
 import CreateCommentSection from './CreateCommentSection';
 import {createComment, deleteMoment, getCommentsForMoment, getMoment, updateMoment,} from '../../api/api';
@@ -10,6 +8,7 @@ import {USER_ID} from "../constants";
 import colors from "../colors"; // Import your API functions
 import CommentList from "./CommentList";
 import MomentDetailCard from "./MomentDetailCard";
+import MomentActions from "./MomentActions";
 
 const MomentDetail = () => {
     const {id} = useParams();
@@ -94,17 +93,13 @@ const MomentDetail = () => {
             <Card sx={{width: '80%', marginBottom: 4, marginTop: 4, backgroundColor: colors.white, boxShadow: 'none'}}>
                 <CardContent>
                     <Box sx={{p: 2, display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
-                        {moment.userId === USER_ID && !isEditing && (
-                            <div>
-                                <Button variant="contained" color="secondary" style={{marginRight: 8}}
-                                        onClick={handleUpdate}>
-                                    Update
-                                </Button>
-                                <Button variant="contained" color="secondary" onClick={handleDelete}>
-                                    Delete
-                                </Button>
-                            </div>
-                        )}
+                        <MomentActions
+                            momentUserId={moment.userId}
+                            currentUserId={USER_ID}
+                            isEditing={isEditing}
+                            handleUpdate={handleUpdate}
+                            handleDelete={handleDelete}
+                        />
                         <MomentDetailCard
                             moment={moment}
                             isEditing={isEditing}

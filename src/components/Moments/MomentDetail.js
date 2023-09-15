@@ -1,33 +1,35 @@
 import React, {useEffect, useState} from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import {Avatar, Box, Button, Card, CardContent, TextField, Typography} from '@mui/material';
+import {Box, Button, Card, CardContent, TextField, Typography} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
-import avatarImage from '../../images/avatar.png'; // Keep the hardcoded avatar image
-import colors from "../colors";
-import {createComment, deleteMoment, getCommentsForMoment, getMoment, updateMoment} from "../../api/api";
-import {USER_ID} from '../constants';
+
+import CreateCommentSection from './CreateCommentSection';
+import {createComment, deleteMoment, getCommentsForMoment, getMoment, updateMoment,} from '../../api/api';
+import {USER_ID} from "../constants";
+import colors from "../colors"; // Import your API functions
+import CommentList from "./CommentList";
 
 const MomentDetail = () => {
     const {id} = useParams();
     const navigate = useNavigate();
 
-    const [newComment, setNewComment] = useState(''); // New state variable for the new comment's text
-    const [isCommenting, setIsCommenting] = useState(false); // New state variable to control the visibility of the comment text field and the save button
-
-    const [moment, setMoment] = useState({})
-    const [comments, setComments] = useState([])
+    const [moment, setMoment] = useState({});
+    const [comments, setComments] = useState([]);
 
     const [isEditing, setIsEditing] = useState(false);
-    const [updatedContent, setUpdatedContent] = useState(moment.content);
+    const [updatedContent, setUpdatedContent] = useState('');
+
+    const [newComment, setNewComment] = useState('');
+    const [isCommenting, setIsCommenting] = useState(false);
 
     const fetchMoment = async () => {
         try {
             const response = await getMoment(id);
             setMoment(response.data);
-            setUpdatedContent(response.data.content); // Set updatedContent here
+            setUpdatedContent(response.data.content);
         } catch (error) {
-            alert(error)
+            alert(error);
         }
     };
 
@@ -36,7 +38,7 @@ const MomentDetail = () => {
             const response = await getCommentsForMoment(id);
             setComments(response.data);
         } catch (error) {
-            alert(error)
+            alert(error);
         }
     };
 
@@ -49,18 +51,10 @@ const MomentDetail = () => {
         if (window.confirm('Are you sure you want to delete this moment?')) {
             try {
                 await deleteMoment(id);
-                navigate('/moments'); // Redirect to /moments
+                navigate('/moments');
             } catch (error) {
                 alert(error);
             }
-        }
-    };
-
-    const saveComment = async () => {
-        try {
-            await createComment(id);
-        } catch (error) {
-            alert(error);
         }
     };
 
@@ -79,20 +73,19 @@ const MomentDetail = () => {
     };
 
     const handleCommentIconClick = () => {
-        setIsCommenting(true); // Show the comment text field and the save button when the comment icon is clicked
+        setIsCommenting(true);
     };
 
     const handleSaveComment = async () => {
-
-
-        // Here you can call an API to save the new comment
-        // After saving the comment, you can fetch the comments again to update the comments list
-        // And hide the comment text field and the save button
-        await saveComment()
-        await fetchMoment()
-        setIsCommenting(false);
-        setNewComment('');
-        await fetchComments()
+        try {
+            await createComment(id, newComment);
+            setIsCommenting(false);
+            setNewComment('');
+            await fetchComments();
+            await fetchMoment();
+        } catch (error) {
+            alert(error);
+        }
     };
 
     return (
@@ -111,7 +104,9 @@ const MomentDetail = () => {
                                 </Button>
                             </div>
                         )}
-                        <Card sx={{backgroundColor: colors.white, width: 1, mt: 2, ml: 0, mr: 0, boxShadow: 'none'}}>
+                        <Card
+                            sx={{backgroundColor: colors.white, width: 1, mt: 2, ml: 0, mr: 0, boxShadow: 'none'}}
+                        >
                             <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                                 {isEditing ? (
                                     <>
@@ -137,49 +132,16 @@ const MomentDetail = () => {
                                     <CommentIcon sx={{ml: 2}} onClick={handleCommentIconClick}/>
                                     <Typography variant="body2" sx={{ml: 1}}>{moment.comments}</Typography>
                                 </Box>
-
-                                {isCommenting && ( // Show the comment text field and the save button if isCommenting is true
-                                    <>
-                                        <TextField
-                                            value={newComment}
-                                            onChange={(e) => setNewComment(e.target.value)}
-                                            sx={{width: '75%', textAlign: 'center', marginTop: 2}}
-                                        />
-                                        <Button
-                                            variant="contained"
-                                            onClick={handleSaveComment}
-                                            sx={{marginTop: 2, backgroundColor: colors.primary}}
-                                        >
-                                            Save Comment
-                                        </Button>
-                                    </>
-                                )}
                             </Box>
                         </Card>
                         <Box sx={{width: '100%'}}>
-                            {comments.length === 0 ? (
-                                <Typography variant="body2" sx={{
-                                    color: colors.primary,
-                                    textAlign: 'center',
-                                    marginTop: 4,
-                                    fontWeight: 'bold'
-                                }}>
-                                    No comments yet.
-                                </Typography>
-                            ) : (
-                                comments.map((comment, index) => (
-                                    <Card key={index}
-                                          sx={{backgroundColor: colors.chatItemBackground, mt: 2, boxShadow: 'none'}}>
-                                        <Box sx={{display: 'flex', alignItems: 'center', p: 2}}>
-                                            <Avatar src={avatarImage}/>
-                                            <Box sx={{ml: 2}}>
-                                                <Typography variant="subtitle2">{comment.user.name}</Typography>
-                                                <Typography variant="body2">{comment.content}</Typography>
-                                            </Box>
-                                        </Box>
-                                    </Card>
-                                ))
-                            )}
+                            <CreateCommentSection
+                                isCommenting={isCommenting}
+                                newComment={newComment}
+                                setNewComment={setNewComment}
+                                handleSaveComment={handleSaveComment}
+                            />
+                           <CommentList comments={comments} />
                         </Box>
                     </Box>
                 </CardContent>

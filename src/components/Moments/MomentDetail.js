@@ -12,6 +12,9 @@ const MomentDetail = () => {
     const {id} = useParams();
     const navigate = useNavigate();
 
+    const [newComment, setNewComment] = useState(''); // New state variable for the new comment's text
+    const [isCommenting, setIsCommenting] = useState(false); // New state variable to control the visibility of the comment text field and the save button
+
     const [moment, setMoment] = useState({})
     const [comments, setComments] = useState([])
 
@@ -27,7 +30,7 @@ const MomentDetail = () => {
             alert(error)
         }
     };
-    
+
     useEffect(() => {
         fetchMoment();
     }, []);
@@ -70,6 +73,18 @@ const MomentDetail = () => {
         }
     };
 
+    const handleCommentIconClick = () => {
+        setIsCommenting(true); // Show the comment text field and the save button when the comment icon is clicked
+    };
+
+    const handleSaveComment = async () => {
+        // Here you can call an API to save the new comment
+        // After saving the comment, you can fetch the comments again to update the comments list
+        // And hide the comment text field and the save button
+        setIsCommenting(false);
+        setNewComment('');
+    };
+
     return (
         <Box sx={{display: 'flex', justifyContent: 'center', height: '100vh'}}>
             <Card sx={{width: '80%', marginBottom: 4, marginTop: 4, backgroundColor: colors.white, boxShadow: 'none'}}>
@@ -108,9 +123,26 @@ const MomentDetail = () => {
                                 <Box sx={{display: 'flex', alignItems: 'center', mt: 2}}>
                                     <ThumbUpIcon/>
                                     <Typography variant="body2" sx={{ml: 1}}>{moment.likes}</Typography>
-                                    <CommentIcon sx={{ml: 2}}/>
+                                    <CommentIcon sx={{ml: 2}} onClick={handleCommentIconClick}/>
                                     <Typography variant="body2" sx={{ml: 1}}>{moment.comments}</Typography>
                                 </Box>
+
+                                {isCommenting && ( // Show the comment text field and the save button if isCommenting is true
+                                    <>
+                                        <TextField
+                                            value={newComment}
+                                            onChange={(e) => setNewComment(e.target.value)}
+                                            sx={{ width: '75%', textAlign: 'center', marginTop: 2 }}
+                                        />
+                                        <Button
+                                            variant="contained"
+                                            onClick={handleSaveComment}
+                                            sx={{ marginTop: 2, backgroundColor: colors.primary }}
+                                        >
+                                            Save Comment
+                                        </Button>
+                                    </>
+                                )}
                             </Box>
                         </Card>
                         <Box sx={{width: '100%'}}>
@@ -146,3 +178,4 @@ const MomentDetail = () => {
 };
 
 export default MomentDetail;
+

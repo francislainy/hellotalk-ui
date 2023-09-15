@@ -21,14 +21,18 @@ export const getMoment = (id) => {
     return api.get(`moments/${id}/`);
 };
 
-export const getCommentsForMoment = (id) => {
-    return api.get(`moments/${id}/comments/`);
-};
-
 export const deleteMoment = (id) => {
     return api.delete(`moments/${id}/`);
 };
 
 export const updateMoment = (id, content) => {
     return api.put(`moments/${id}/`, { content });
+};
+
+export const getCommentsForMoment = (id) => {
+    return api.get(`moments/${id}/comments/`);
+};
+
+export const createComment = (momentId, content) => {
+    return api.post(`moments/${momentId}/comments`, { content });
 };

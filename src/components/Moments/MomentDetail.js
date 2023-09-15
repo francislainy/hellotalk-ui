@@ -5,7 +5,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import avatarImage from '../../images/avatar.png'; // Keep the hardcoded avatar image
 import colors from "../colors";
-import {deleteMoment, getCommentsForMoment, getMoment, updateMoment} from "../../api/api";
+import {createComment, deleteMoment, getCommentsForMoment, getMoment, updateMoment} from "../../api/api";
 import {USER_ID} from '../constants';
 
 const MomentDetail = () => {
@@ -31,20 +31,17 @@ const MomentDetail = () => {
         }
     };
 
+    const fetchComments = async () => {
+        try {
+            const response = await getCommentsForMoment(id);
+            setComments(response.data);
+        } catch (error) {
+            alert(error)
+        }
+    };
+
     useEffect(() => {
         fetchMoment();
-    }, []);
-
-    useEffect(() => {
-        const fetchComments = async () => {
-            try {
-                const response = await getCommentsForMoment(id);
-                setComments(response.data);
-            } catch (error) {
-                alert(error)
-            }
-        };
-
         fetchComments();
     }, []);
 
@@ -59,6 +56,14 @@ const MomentDetail = () => {
         }
     };
 
+    const saveComment = async () => {
+        try {
+            await createComment(id);
+        } catch (error) {
+            alert(error);
+        }
+    };
+
     const handleUpdate = () => {
         setIsEditing(true);
     };
@@ -67,7 +72,7 @@ const MomentDetail = () => {
         try {
             await updateMoment(id, updatedContent);
             setIsEditing(false);
-            fetchMoment();
+            await fetchMoment();
         } catch (error) {
             alert(error);
         }
@@ -78,11 +83,16 @@ const MomentDetail = () => {
     };
 
     const handleSaveComment = async () => {
+
+
         // Here you can call an API to save the new comment
         // After saving the comment, you can fetch the comments again to update the comments list
         // And hide the comment text field and the save button
+        await saveComment()
+        await fetchMoment()
         setIsCommenting(false);
         setNewComment('');
+        await fetchComments()
     };
 
     return (
@@ -92,7 +102,8 @@ const MomentDetail = () => {
                     <Box sx={{p: 2, display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
                         {moment.userId === USER_ID && !isEditing && (
                             <div>
-                                <Button variant="contained" color="secondary" style={{marginRight: 8}} onClick={handleUpdate}>
+                                <Button variant="contained" color="secondary" style={{marginRight: 8}}
+                                        onClick={handleUpdate}>
                                     Update
                                 </Button>
                                 <Button variant="contained" color="secondary" onClick={handleDelete}>
@@ -107,12 +118,12 @@ const MomentDetail = () => {
                                         <TextField
                                             value={updatedContent}
                                             onChange={(e) => setUpdatedContent(e.target.value)}
-                                            sx={{ width: '75%', textAlign: 'center' }}
+                                            sx={{width: '75%', textAlign: 'center'}}
                                         />
                                         <Button
                                             variant="contained"
                                             onClick={handleSave}
-                                            sx={{ marginTop: 2, backgroundColor: colors.primary }}
+                                            sx={{marginTop: 2, backgroundColor: colors.primary}}
                                         >
                                             Save
                                         </Button>
@@ -132,12 +143,12 @@ const MomentDetail = () => {
                                         <TextField
                                             value={newComment}
                                             onChange={(e) => setNewComment(e.target.value)}
-                                            sx={{ width: '75%', textAlign: 'center', marginTop: 2 }}
+                                            sx={{width: '75%', textAlign: 'center', marginTop: 2}}
                                         />
                                         <Button
                                             variant="contained"
                                             onClick={handleSaveComment}
-                                            sx={{ marginTop: 2, backgroundColor: colors.primary }}
+                                            sx={{marginTop: 2, backgroundColor: colors.primary}}
                                         >
                                             Save Comment
                                         </Button>
@@ -178,4 +189,3 @@ const MomentDetail = () => {
 };
 
 export default MomentDetail;
-

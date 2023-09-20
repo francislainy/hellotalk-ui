@@ -1,10 +1,11 @@
 import React from 'react';
 
-const SelfIntroduction = () => {
+const SelfIntroduction = ({selfIntroduction}) => {
 
     return (
         <>
             <h1>Self-introduction</h1>
+            <span>{selfIntroduction}</span>
         </>
     );
 }

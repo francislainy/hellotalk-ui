@@ -12,6 +12,8 @@ const Profile = () => {
             const response = await getUser(USER_ID);
             const data = response.data;
 
+            const selfIntroduction = data.selfIntroduction || [];
+
             // Assuming hobbyAndInterests is an array of strings
             const interests = data.hobbyAndInterests || [];
 
@@ -24,6 +26,7 @@ const Profile = () => {
             const school = data.school ? [data.school] : [];
 
             setUserInfo({
+                selfIntroduction,
                 interests,
                 placesToVisit,
                 occupation,
@@ -43,7 +46,7 @@ const Profile = () => {
         <>
             {userInfo !== undefined &&
                 <>
-                    <SelfIntroduction/>
+                    <SelfIntroduction selfIntroduction={userInfo.selfIntroduction}/>
                     <UserInfo sectionHeader={'Interest & Hobbies'} list={userInfo.interests}/>
                     <UserInfo sectionHeader={'Places I want to go'} list={userInfo.placesToVisit}/>
                     <UserInfo sectionHeader={'My Occupation'} list={userInfo.occupation}/>

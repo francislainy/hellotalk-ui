@@ -12,7 +12,7 @@ const Profile = () => {
             const response = await getUser(USER_ID);
             const data = response.data;
 
-            const selfIntroduction = data.selfIntroduction || [];
+            const selfIntroduction = data.selfIntroduction || '';
 
             // Assuming hobbyAndInterests is an array of strings
             const interests = data.hobbyAndInterests || [];
@@ -23,15 +23,12 @@ const Profile = () => {
 
             const hometown = data.hometown ? [data.hometown.city, data.hometown.country] : [];
 
-            const school = data.school ? [data.school] : [];
-
             setUserInfo({
                 selfIntroduction,
                 interests,
                 placesToVisit,
                 occupation,
                 hometown,
-                school
             });
         } catch (error) {
             alert(error);
@@ -47,12 +44,10 @@ const Profile = () => {
             {userInfo !== undefined &&
                 <>
                     <SelfIntroduction selfIntroduction={userInfo.selfIntroduction}/>
+                    <UserInfo sectionHeader={'My Hometown'} list={userInfo.hometown}/>
+                    <UserInfo sectionHeader={'My Occupation'} list={userInfo.occupation}/>
                     <UserInfo sectionHeader={'Interest & Hobbies'} list={userInfo.interests}/>
                     <UserInfo sectionHeader={'Places I want to go'} list={userInfo.placesToVisit}/>
-                    <UserInfo sectionHeader={'My Occupation'} list={userInfo.occupation}/>
-                    <UserInfo sectionHeader={'My Hometown'} list={userInfo.hometown}/>
-                    <UserInfo sectionHeader={'My School'} list={userInfo.school}/>
-                    <h2>Age</h2>
                 </>
             }
         </>

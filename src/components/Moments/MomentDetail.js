@@ -103,7 +103,6 @@ const MomentDetail = () => {
                         <MomentDetailCard
                             moment={moment}
                             isEditing={isEditing}
-                            setIsEditing={setIsEditing}
                             updatedContent={updatedContent}
                             setUpdatedContent={setUpdatedContent}
                             handleSave={handleSave}

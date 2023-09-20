@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import UserBanner from "./UserBanner";
-import Profile from "../UnderConstruction";
+import Profile from "../User/Profile";
 import Moments from "../Moments/Moments";
 import UserTabs from "./UserTabs";
 

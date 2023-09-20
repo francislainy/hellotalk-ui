@@ -89,7 +89,7 @@ const MomentDetail = () => {
     };
 
     return (
-        <Box sx={{display: 'flex', justifyContent: 'center', height: '100vh'}}>
+        <Box sx={{display: 'flex', justifyContent: 'center', minHeight: '100vh'}}>
             <Card sx={{width: '80%', marginBottom: 4, marginTop: 4, backgroundColor: colors.white, boxShadow: 'none'}}>
                 <CardContent>
                     <Box sx={{p: 2, display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>

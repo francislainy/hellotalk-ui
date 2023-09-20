@@ -1,11 +1,26 @@
 // src/components/Moments/MomentDetailCard.js
-import React from 'react';
+import React, {useEffect, useRef} from 'react';
 import {Box, Button, Card, TextField, Typography} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import colors from "../colors";
 
-const MomentDetailCard = ({ moment, isEditing, updatedContent, setUpdatedContent, handleSave, handleCommentIconClick }) => {
+const MomentDetailCard = ({ moment, isEditing, setIsEditing, updatedContent, setUpdatedContent, handleSave, handleCommentIconClick }) => {
+    const inputRef = useRef(null);
+
+    const handleClickOutside = (event) => {
+        if (inputRef.current && !inputRef.current.contains(event.target)) {
+            setIsEditing(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, []);
+
     return (
         <Card sx={{backgroundColor: colors.white, width: 1, mt: 2, ml: 0, mr: 0, boxShadow: 'none'}}>
             <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -14,6 +29,7 @@ const MomentDetailCard = ({ moment, isEditing, updatedContent, setUpdatedContent
                         <TextField
                             value={updatedContent}
                             onChange={(e) => setUpdatedContent(e.target.value)}
+                            ref={inputRef}
                             sx={{width: '75%', textAlign: 'center'}}
                         />
                         <Button

@@ -9,6 +9,10 @@ const api = axios.create({
     }
 });
 
+export const getUser = (id) => {
+    return api.get(`users/${id}/`);
+};
+
 export const createMoment = (content) => {
     return api.post('moments/', {content});
 };

@@ -10,7 +10,7 @@ const api = axios.create({
 });
 
 export const createMoment = (content) => {
-    return api.post('moments/', { content });
+    return api.post('moments/', {content});
 };
 
 export const getMoments = () => {
@@ -26,7 +26,7 @@ export const deleteMoment = (id) => {
 };
 
 export const updateMoment = (id, content) => {
-    return api.put(`moments/${id}/`, { content });
+    return api.put(`moments/${id}/`, {content});
 };
 
 export const getCommentsForMoment = (id) => {
@@ -34,5 +34,13 @@ export const getCommentsForMoment = (id) => {
 };
 
 export const createComment = (momentId, content) => {
-    return api.post(`moments/${momentId}/comments`, { content });
+    return api.post(`moments/${momentId}/comments`, {content});
+};
+
+export const updateComment = (momentId, commentId, content) => {
+    return api.put(`moments/${momentId}/comments/${commentId}`, {content});
+};
+
+export const deleteComment = (momentId, commentId) => {
+    return api.delete(`moments/${momentId}/comments/${commentId}`);
 };

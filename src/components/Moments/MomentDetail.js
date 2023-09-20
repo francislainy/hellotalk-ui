@@ -115,7 +115,7 @@ const MomentDetail = () => {
                                 setNewComment={setNewComment}
                                 handleSaveComment={handleSaveComment}
                             />
-                           <CommentList comments={comments} />
+                           <CommentList comments={comments} momentId={id} fetchComments={fetchComments}/>
                         </Box>
                     </Box>
                 </CardContent>

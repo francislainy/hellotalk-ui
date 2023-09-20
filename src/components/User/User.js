@@ -11,7 +11,7 @@ const User = () => {
         latestMessage: 'Hello, this is the latest message from user 1',
     };
 
-    const [component, setComponent] = useState(null);
+    const [component, setComponent] = useState(<Profile/>);
 
     const loadComponent = (componentName) => {
         switch (componentName) {

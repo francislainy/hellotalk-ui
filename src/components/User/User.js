@@ -2,8 +2,7 @@ import React, {useState} from 'react';
 import UserBanner from "./UserBanner";
 import Profile from "../UnderConstruction";
 import Moments from "../Moments/Moments";
-import {Button} from "@mui/material";
-import colors from "../colors";
+import UserTabs from "./UserTabs";
 
 const User = () => {
     const user = {
@@ -30,18 +29,7 @@ const User = () => {
     return (
         <>
             <UserBanner user={user}/>
-            <div style={{display: 'flex', justifyContent: 'space-between', marginTop: "50px"}}>
-                <Button sx={{
-                    backgroundColor: colors.primary, '&:hover': {
-                        backgroundColor: colors.darkPurple, // replace with your hover color
-                    }, color: colors.white, marginRight: "8px"
-                }} onClick={() => loadComponent('profile')}>Profile</Button>
-                <Button sx={{
-                    backgroundColor: colors.primary, '&:hover': {
-                        backgroundColor: colors.darkPurple, // replace with your hover color
-                    }, color: colors.white
-                }} onClick={() => loadComponent('moments')}>Moments</Button>
-            </div>
+            <UserTabs loadComponent={loadComponent}/>
             {component}
         </>
     );

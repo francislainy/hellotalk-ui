@@ -2,19 +2,13 @@ import React from 'react';
 import {Avatar, Box, Card, Typography} from '@mui/material';
 import colors from "../colors";
 import avatarImage from "../../images/avatar.png";
+import NoComments from "./NoComments";
 
 const CommentList = ({comments}) => {
     return (
         <>
             {comments.length === 0 ? (
-                <Typography variant="body2" sx={{
-                    color: colors.primary,
-                    textAlign: 'center',
-                    marginTop: 4,
-                    fontWeight: 'bold'
-                }}>
-                    No comments yet.
-                </Typography>
+                <NoComments/>
             ) : (
                 comments.map((comment, index) => (
                     <Card

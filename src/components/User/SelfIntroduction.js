@@ -4,7 +4,7 @@ const SelfIntroduction = ({selfIntroduction}) => {
 
     return (
         <>
-            <h1>Self-introduction</h1>
+            <h2>Self-introduction</h2>
             <span>{selfIntroduction}</span>
         </>
     );

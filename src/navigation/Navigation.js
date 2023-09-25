@@ -1,11 +1,11 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import MomentDetail from '../components/Moments/MomentDetail';
-import Home from '../screen/HomeScreen';
-import Connect from '../screen/ConnectScreen';
-import Live from '../screen/LiveScreen';
-import Me from '../screen/MeScreen';
-import Moments from '../screen/MomentsScreen';
+import HomeScreen from '../screen/HomeScreen';
+import ConnectScreen from '../screen/ConnectScreen';
+import LiveScreen from '../screen/LiveScreen';
+import MeScreen from '../screen/MeScreen';
+import MomentsScreen from '../screen/MomentsScreen';
 import CustomAppBar from "../components/AppBar";
 import AddMoment from "../components/Moments/AddMoment";
 
@@ -14,11 +14,11 @@ const Navigation = () => {
         <Router>
             <CustomAppBar />
             <Routes>
-                <Route path="/moments" element={<Moments/>}/>
-                <Route path="/connect" element={<Connect/>}/>
-                <Route path="/live" element={<Live/>}/>
-                <Route path="/me" element={<Me/>}/>
-                <Route path="/" element={<Home/>}/>
+                <Route path="/moments" element={<MomentsScreen/>}/>
+                <Route path="/connect" element={<ConnectScreen/>}/>
+                <Route path="/live" element={<LiveScreen/>}/>
+                <Route path="/me" element={<MeScreen/>}/>
+                <Route path="/" element={<HomeScreen/>}/>
                 <Route path="/moment-detail/:id" element={<MomentDetail />} />
                 <Route path="/moments/add" element={<AddMoment />} />
             </Routes>

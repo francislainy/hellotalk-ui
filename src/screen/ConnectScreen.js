@@ -1,14 +1,14 @@
 import React from 'react';
-import UnderConstruction from "../components/UnderConstruction";
+import Connect from "../components/Connect";
 
-const Connect = () => {
+const ConnectScreen = () => {
 
     return (
         <div>
             <h1>Connect</h1>
-            <UnderConstruction/>
+            <Connect/>
         </div>
     );
 }
 
-export default Connect;
+export default ConnectScreen;

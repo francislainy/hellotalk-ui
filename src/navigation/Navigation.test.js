@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect';
 import {BrowserRouter, Route, Router} from 'react-router-dom';
 import Navigation from './Navigation';
 import Moments from "../screen/Moments";
-import Connect from "../screen/Connect";
+import Connect from "../screen/Connect.js";
 import Live from "../screen/Live";
 import Me from "../screen/Me";
 import Home from "../screen/Home";

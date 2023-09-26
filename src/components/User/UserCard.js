@@ -1,9 +1,13 @@
-import React from 'react';
-import {Card, CardContent, Typography, Avatar, Button} from '@mui/material';
+import React, {useEffect, useState} from 'react';
+import {Avatar, Button, Card, CardContent, Typography} from '@mui/material';
 import colors from '../colors';
 import avatarImage from "../../images/avatar.png";
 
-const UserCard = ({user, handleCreateFollowship}) => {
+const UserCard = ({user, handleCreateFollowship, handleDeleteFollowship, followships}) => {
+
+    const [isFollowing, setIsFollowing] = useState()
+    const [followButtonText, setFollowButtonText] = useState()
+
     const cardStyle = {
         display: 'flex',
         marginBottom: '1em',
@@ -27,16 +31,47 @@ const UserCard = ({user, handleCreateFollowship}) => {
         color: 'white',
     };
 
+    const handleIsFollowing = async () => {
+        const followship = followships.find(followship => followship.userToId === user.id);
+        if (followship) {
+            return handleDeleteFollowship(followship.id)
+                .then(() => {
+                    setFollowButtonText('Following')
+                    setIsFollowing(false)
+                });
+        } else {
+            return handleCreateFollowship(user.id)
+                .then(() => {
+                    setFollowButtonText('Follow')
+                    setIsFollowing(true)
+                });
+        }
+    };
+
+    const handleButtonText = async () => {
+        const followship = followships.find(followship => followship.userToId === user.id);
+        if (followship) {
+            setFollowButtonText('Following')
+        } else {
+            setFollowButtonText('Follow')
+        }
+    };
+
+    useEffect(() => {
+        handleButtonText()
+    }, [isFollowing])
+
     return (
         <Card style={cardStyle}>
             <Avatar style={avatarStyle} src={avatarImage}/>
             <CardContent>
-                <Typography variant="h8" sx={{ color: colors.primary, fontWeight: 'bold' }}>
+                <Typography variant="h8" sx={{color: colors.primary, fontWeight: 'bold'}}>
                     {user.name}
                 </Typography>
                 <Typography variant="body2">{user.description}</Typography>
-                <Button style={buttonStyle} variant="contained" size="small" onClick={() => handleCreateFollowship(user.id)}>
-                    Follow
+                <Button style={buttonStyle} variant="contained" size="small"
+                        onClick={handleIsFollowing}>
+                    {followButtonText}
                 </Button>
             </CardContent>
         </Card>

@@ -56,3 +56,11 @@ export const deleteComment = (momentId, commentId) => {
 export const createFollowship = (followship) => {
     return api.post('followship/', followship);
 };
+
+export const getFollowshipFromUser = (userId) => {
+    return api.get(`followship/from/user/${userId}`, userId);
+};
+
+export const deleteFollowship = (followshipId) => {
+    return api.delete(`followship/${followshipId}`);
+};

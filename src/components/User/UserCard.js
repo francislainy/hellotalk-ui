@@ -3,7 +3,7 @@ import {Card, CardContent, Typography, Avatar, Button} from '@mui/material';
 import colors from '../colors';
 import avatarImage from "../../images/avatar.png";
 
-const UserCard = ({user}) => {
+const UserCard = ({user, handleCreateFollowship}) => {
     const cardStyle = {
         display: 'flex',
         marginBottom: '1em',
@@ -35,7 +35,7 @@ const UserCard = ({user}) => {
                     {user.name}
                 </Typography>
                 <Typography variant="body2">{user.description}</Typography>
-                <Button style={buttonStyle} variant="contained" size="small">
+                <Button style={buttonStyle} variant="contained" size="small" onClick={() => handleCreateFollowship(user.id)}>
                     Follow
                 </Button>
             </CardContent>

@@ -52,3 +52,7 @@ export const updateComment = (momentId, commentId, content) => {
 export const deleteComment = (momentId, commentId) => {
     return api.delete(`moments/${momentId}/comments/${commentId}`);
 };
+
+export const createFollowship = (followship) => {
+    return api.post('followship/', followship);
+};

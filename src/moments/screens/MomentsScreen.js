@@ -3,8 +3,8 @@ import {Box} from "@mui/material";
 
 import useMoments from '../hooks/useMoments';
 import MomentFilterSelector from "../components/MomentFilterSelector";
-import MomentList from "../components/MomentList";
-import FabAddMoment from "../components/FabAddMoment";
+import MomentList from "../components/mainPage/MomentList";
+import FabAddMoment from "../components/mainPage/FabAddMoment";
 
 const Moments = () => {
     const { moments, fetchMoments } = useMoments('');

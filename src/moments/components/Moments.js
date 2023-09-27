@@ -2,7 +2,7 @@ import React from 'react';
 import {Box} from "@mui/material";
 
 import useMoments from '../hooks/useMoments';
-import MomentList from "./MomentList";
+import MomentList from "./mainPage/MomentList";
 
 const Moments = () => {
     const {moments} = useMoments('');

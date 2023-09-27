@@ -1,14 +1,14 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import MomentDetail from '../f_moments/components/Moments/MomentDetail';
-import HomeScreen from '../f_hellotalk/screens/HomeScreen';
-import ConnectScreen from '../f_connect/screens/ConnectScreen';
-import LiveScreen from '../f_live/screens/LiveScreen';
-import MeScreen from '../f_me/screens/MeScreen';
-import MomentsScreen from '../f_moments/screens/MomentsScreen';
+import MomentDetail from '../moments/components/MomentDetail';
+import HomeScreen from '../hellotalk/screens/HomeScreen';
+import ConnectScreen from '../connect/screens/ConnectScreen';
+import LiveScreen from '../live/screens/LiveScreen';
+import MeScreen from '../me/screens/MeScreen';
+import MomentsScreen from '../moments/screens/MomentsScreen';
 import CustomAppBar from "../AppBar";
-import AddMoment from "../f_moments/components/Moments/AddMoment";
-import UserDetail from "../f_me/components/User/UserDetail";
+import AddMoment from "../moments/components/AddMoment";
+import UserDetail from "../me/components/User/UserDetail";
 
 const Navigation = () => {
     return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import Moments from "../components/Moments";
 
-const Contact = () => {
+const MomentsScreen = () => {
   return (
     <div>
       <Moments />
@@ -9,4 +9,4 @@ const Contact = () => {
   );
 }
 
-export default Contact;
+export default MomentsScreen;

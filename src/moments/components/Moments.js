@@ -1,26 +1,13 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import {Box} from "@mui/material";
 
-import {getMoments} from "../../api/api";
+import useMoments from '../hooks/useMoments';
 import MomentList from "./MomentList";
 import FabAddMoment from "./FabAddMoment";
 import MomentFilterSelector from "./MomentFilterSelector";
 
 const Moments = () => {
-    const [moments, setMoments] = useState([])
-
-    const fetchMoments = async (param) => {
-        try {
-            const response = await getMoments(param);
-            setMoments(response.data);
-        } catch (error) {
-            alert(error)
-        }
-    };
-
-    useEffect(() => {
-        fetchMoments('');
-    }, []);
+    const { moments, fetchMoments } = useMoments('');
 
     return (
         <Box sx={{display: 'grid', justifyContent: 'center', marginTop: '20px'}}>
@@ -30,7 +17,6 @@ const Moments = () => {
             </Box>
             <FabAddMoment/>
         </Box>
-
     );
 }
 export default Moments;

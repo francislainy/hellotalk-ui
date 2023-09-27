@@ -8,6 +8,7 @@ import MeScreen from '../screen/MeScreen';
 import MomentsScreen from '../screen/MomentsScreen';
 import CustomAppBar from "../components/AppBar";
 import AddMoment from "../components/Moments/AddMoment";
+import UserDetail from "../components/User/UserDetail";
 
 const Navigation = () => {
     return (
@@ -21,6 +22,7 @@ const Navigation = () => {
                 <Route path="/" element={<HomeScreen/>}/>
                 <Route path="/moment-detail/:id" element={<MomentDetail />} />
                 <Route path="/moments/add" element={<AddMoment />} />
+                <Route path="/users/:id" element={<UserDetail />} />
             </Routes>
         </Router>
     );

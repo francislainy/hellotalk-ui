@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react';
 import {Avatar, Button, Card, CardContent, Typography} from '@mui/material';
 import colors from '../colors';
 import avatarImage from "../../images/avatar.png";
+import {useNavigate} from "react-router-dom";
 
 const UserCard = ({user, handleCreateFollowship, handleDeleteFollowship, followships}) => {
+
+    const navigate = useNavigate()
 
     const [isFollowing, setIsFollowing] = useState()
     const [followButtonText, setFollowButtonText] = useState()
@@ -57,13 +60,17 @@ const UserCard = ({user, handleCreateFollowship, handleDeleteFollowship, follows
         }
     };
 
+    const handleOnClickAvatar = () => {
+        navigate(`/users/${user.id}`);
+    }
+
     useEffect(() => {
         handleButtonText()
     }, [isFollowing])
 
     return (
         <Card style={cardStyle}>
-            <Avatar style={avatarStyle} src={avatarImage}/>
+            <Avatar style={avatarStyle} src={avatarImage} onClick={handleOnClickAvatar}/>
             <CardContent>
                 <Typography variant="h8" sx={{color: colors.primary, fontWeight: 'bold'}}>
                     {user.name}

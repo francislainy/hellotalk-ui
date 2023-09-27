@@ -20,10 +20,10 @@ const User = () => {
         occupation: [],
         hometown: [],
     });
-    const [component, setComponent] = useState(null);
 
     const [isLoading, setIsLoading] = useState(true)
 
+    const [component, setComponent] = useState(null);
     const loadComponent = (componentName) => {
         switch (componentName) {
             case 'profile':

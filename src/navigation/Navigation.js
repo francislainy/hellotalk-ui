@@ -7,7 +7,7 @@ import LiveScreen from '../live/screens/LiveScreen';
 import MeScreen from '../me/screens/MeScreen';
 import MomentsScreen from '../moments/screens/MomentsScreen';
 import CustomAppBar from "../AppBar";
-import AddMoment from "../moments/components/AddMoment";
+import AddMoment from "../moments/components/momentMain/AddMoment";
 import UserDetail from "../me/components/User/UserDetail";
 
 const Navigation = () => {

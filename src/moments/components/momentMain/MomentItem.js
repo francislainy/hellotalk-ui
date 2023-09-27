@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import {Avatar, Box, Typography, IconButton, Card, CardContent} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
-import avatarImage from '../../images/avatar.png';
+import avatarImage from '../../../images/avatar.png';
 
 const MomentItem = ({moment, index}) => {
 

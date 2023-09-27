@@ -1,8 +1,8 @@
 import React from 'react';
 import {Box, Button, TextField} from '@mui/material';
-import colors from "../../colors/colors";
+import colors from "../../../colors/colors";
 
-const CreateCommentSection = ({ isCommenting, newComment, setNewComment, handleSaveComment }) => {
+const CreateComment = ({ isCommenting, newComment, setNewComment, handleSaveComment }) => {
     return (
         <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
             {isCommenting && (
@@ -25,4 +25,4 @@ const CreateCommentSection = ({ isCommenting, newComment, setNewComment, handleS
     );
 };
 
-export default CreateCommentSection;
+export default CreateComment;

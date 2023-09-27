@@ -1,28 +1,18 @@
-import React, {useState} from 'react';
-import {Avatar, Box, Card, Typography, Button, TextField} from '@mui/material';
-import colors from "../../colors/colors";
-import avatarImage from "../../images/avatar.png";
-import {deleteComment, updateComment} from '../../api/api';
-import {USER_ID} from "../../constants/constants";
+import React from 'react';
+import {Avatar, Box, Button, Card, TextField, Typography} from '@mui/material';
+import colors from "../../../colors/colors";
+import avatarImage from "../../../images/avatar.png";
+import {USER_ID} from "../../../constants/constants";
+import {useComment} from "../../hooks/useComment";
 
 const CommentCard = ({comment, momentId, fetchComments}) => {
-    const [isEditing, setIsEditing] = useState(false);
-    const [updatedContent, setUpdatedContent] = useState(comment.content);
-
-    const handleDelete = async () => {
-        if (window.confirm('Are you sure you want to delete this comment?')) {
-            await deleteComment(momentId, comment.id);
-            fetchComments();
-        }
-    };
-
-    const handleUpdate = async () => {
-        if (isEditing) {
-            await updateComment(momentId, comment.id, updatedContent);
-            fetchComments();
-        }
-        setIsEditing(!isEditing);
-    };
+    const {
+        isEditing,
+        updatedContent,
+        setUpdatedContent,
+        handleDelete,
+        handleUpdate
+    } = useComment(comment, momentId, fetchComments);
 
     return (
         <Card

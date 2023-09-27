@@ -1,13 +1,13 @@
 import React from 'react';
 import {Box, Card, CardContent} from '@mui/material';
 
-import CreateCommentSection from '../components/CreateCommentSection';
+import CreateComment from '../components/comments/CreateComment';
 import {USER_ID} from "../../constants/constants";
 import colors from "../../colors/colors";
-import CommentList from "../components/CommentList";
-import MomentDetailCard from "../components/MomentDetailCard";
-import MomentActions from "../components/MomentActions";
-import useMomentDetail from "../hooks/useMomentDetails";
+import CommentList from "../components/comments/CommentList";
+import MomentDetail from "../components/momentDetail/MomentDetail";
+import MomentActions from "../components/momentDetail/MomentActions";
+import useMomentDetail from "../hooks/useMomentDetail";
 
 const MomentDetailScreen = () => {
     const {
@@ -40,7 +40,7 @@ const MomentDetailScreen = () => {
                             handleUpdate={handleUpdate}
                             handleDelete={handleDelete}
                         />
-                        <MomentDetailCard
+                        <MomentDetail
                             moment={moment}
                             isEditing={isEditing}
                             updatedContent={updatedContent}
@@ -49,7 +49,7 @@ const MomentDetailScreen = () => {
                             handleCommentIconClick={handleCommentIconClick}
                         />
                         <Box sx={{width: '100%'}}>
-                            <CreateCommentSection
+                            <CreateComment
                                 isCommenting={isCommenting}
                                 newComment={newComment}
                                 setNewComment={setNewComment}

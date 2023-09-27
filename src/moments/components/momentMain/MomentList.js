@@ -1,6 +1,6 @@
 import React from 'react'
 import {Box, List} from "@mui/material";
-import MomentItem from "../MomentItem";
+import MomentItem from "./MomentItem";
 
 const MomentList = ({moments}) => {
     return <Box>

@@ -1,6 +1,6 @@
 import React from 'react';
 import {Box, Button} from "@mui/material";
-import colors from '../../colors/colors';
+import colors from '../../../colors/colors';
 
 const buttons = ['Recent', 'Best', 'Learn', 'Nearby', 'Following', 'Help', 'Classmates', 'Voice']
 

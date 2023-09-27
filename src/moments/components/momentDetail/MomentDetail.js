@@ -2,9 +2,9 @@ import React from 'react';
 import {Box, Button, Card, TextField, Typography} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
-import colors from "../../colors/colors";
+import colors from "../../../colors/colors";
 
-const MomentDetailCard = ({ moment, isEditing, updatedContent, setUpdatedContent, handleSave, handleCommentIconClick }) => {
+const MomentDetail = ({ moment, isEditing, updatedContent, setUpdatedContent, handleSave, handleCommentIconClick }) => {
     return (
         <Card sx={{backgroundColor: colors.white, width: 1, mt: 2, ml: 0, mr: 0, boxShadow: 'none'}}>
             <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -37,4 +37,4 @@ const MomentDetailCard = ({ moment, isEditing, updatedContent, setUpdatedContent
     );
 };
 
-export default MomentDetailCard;
+export default MomentDetail;

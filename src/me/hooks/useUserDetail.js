@@ -1,9 +1,10 @@
 import {useState, useEffect} from 'react';
-import {getUser} from "../../../api/api";
-import {USER_ID} from "../../../constants/constants";
-import avatarImage from '../../../images/avatar.png'
+import {useParams} from "react-router-dom";
+import {getUser} from "../../api/api";
+import avatarImage from "../../images/avatar.png"
 
-export const useUser = () => {
+export const useUserDetail = () => {
+    const {id} = useParams();
     const [userInfo, setUserInfo] = useState({
         name: '',
         avatar: '',
@@ -20,7 +21,7 @@ export const useUser = () => {
 
     const fetchUser = async () => {
         try {
-            const response = await getUser(USER_ID);
+            const response = await getUser(id);
             const data = response.data;
 
             setUserInfo({
@@ -43,7 +44,7 @@ export const useUser = () => {
 
     useEffect(() => {
         fetchUser();
-    }, []); // Fetch user when component mounts
+    }, []); // Fetch user when component mounts or id changes
 
     return {userInfo, isLoading, fetchUser};
 }

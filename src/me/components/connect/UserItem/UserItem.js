@@ -1,6 +1,6 @@
 import React from 'react';
 import {Avatar, Button, Card, CardContent, Typography} from '@mui/material';
-import avatarImage from "../../../../../images/avatar.png";
+import avatarImage from "../../../../images/avatar.png";
 import {useNavigate} from "react-router-dom";
 import {useUserItem} from '../../../hooks/useUserItem';
 import './UserItem.css';

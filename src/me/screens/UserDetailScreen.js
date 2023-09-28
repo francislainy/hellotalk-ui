@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import UserBanner from "../components/User/profile/UserBanner";
-import UserFilterTabs from "../components/User/profile/UserFilterTabs";
-import UserProfile from "../components/User/profile/UserProfile";
+import UserBanner from "../components/profile/UserBanner";
+import UserFilterTabs from "../components/profile/UserFilterTabs";
+import UserProfile from "../components/profile/UserProfile";
 import Moments from "../../moments/components/Moments";
-import {useUserDetail} from "../components/hooks/useUserDetail";
+import {useUserDetail} from "../hooks/useUserDetail";
 
 const UserDetailScreen = () => {
     const {userInfo, isLoading, fetchUser} = useUserDetail();

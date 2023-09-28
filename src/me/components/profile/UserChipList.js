@@ -1,6 +1,6 @@
 import React from "react";
 import {Chip} from "@mui/material";
-import colors from "../../../../colors/colors";
+import colors from "../../../colors/colors";
 
 const UserChipList = ({list}) => {
     return <div className="tag-container">

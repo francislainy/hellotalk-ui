@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
-import {USER_ID} from "../../../constants/constants";
-import {createFollowship, deleteFollowship, getFollowshipFromUser, getUsers} from "../../../api/api";
+import {USER_ID} from "../../constants/constants";
+import {createFollowship, deleteFollowship, getFollowshipFromUser, getUsers} from "../../api/api";
 
 export const useUserList = () => {
     const [users, setUsers] = useState([])

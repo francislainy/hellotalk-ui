@@ -1,5 +1,5 @@
 import React from 'react';
-import UserList from "../../me/components/User/connect/UserList";
+import UserList from "../../me/components/connect/UserList";
 
 const ConnectScreen = () => {
 

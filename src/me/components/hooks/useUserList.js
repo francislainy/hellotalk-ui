@@ -1,9 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import UserCard from './User/UserCard';
-import {USER_ID} from "../../constants/constants";
-import {createFollowship, deleteFollowship, getFollowshipFromUser, getUsers} from "../../api/api";
+import {useEffect, useState} from 'react';
+import {USER_ID} from "../../../constants/constants";
+import {createFollowship, deleteFollowship, getFollowshipFromUser, getUsers} from "../../../api/api";
 
-const Connect = () => {
+export const useUserList = () => {
     const [users, setUsers] = useState([])
     const [followships, setFollowships] = useState([])
 
@@ -50,20 +49,5 @@ const Connect = () => {
         }
     };
 
-    return (
-        <div>
-            {users
-                .filter(user => user.id !== USER_ID)
-                .map(user => (
-                    <UserCard key={user.id}
-                              user={user}
-                              handleCreateFollowship={(userToId) => handleCreateFollowship(userToId).then(getFollowships)}
-                              handleDeleteFollowship={(followshipId) => handleDeleteFollowship(followshipId).then(getFollowships)}
-                              followships={followships}
-                    />
-                ))}
-        </div>
-    );
+    return { users, followships, getFollowships, handleCreateFollowship, handleDeleteFollowship };
 };
-
-export default Connect;

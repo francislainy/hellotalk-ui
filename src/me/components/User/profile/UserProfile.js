@@ -2,7 +2,7 @@ import React from 'react';
 import SelfIntroduction from "./SelfIntroduction";
 import UserInfo from "./UserInfo";
 
-const Profile = ({userInfo}) => {
+const UserProfile = ({userInfo}) => {
     return (
         <>
             <SelfIntroduction selfIntroduction={userInfo.selfIntroduction}/>
@@ -14,4 +14,4 @@ const Profile = ({userInfo}) => {
     );
 }
 
-export default Profile;
+export default UserProfile;

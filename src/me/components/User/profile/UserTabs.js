@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import {Button} from "@mui/material";
-import colors from "../../../colors/colors";
+import colors from "../../../../colors/colors";
 
 const UserTabs = ({loadComponent}) => {
     const [selectedTab, setSelectedTab] = useState('profile');

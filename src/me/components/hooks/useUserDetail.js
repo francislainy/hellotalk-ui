@@ -1,14 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import UserBanner from "./UserBanner";
+import {useState, useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import {getUser} from "../../../api/api";
-import UserTabs from "./UserTabs";
-import Profile from "./Profile";
-import Moments from "../../../moments/components/Moments";
-import avatarImage from "../../../images/avatar.png";
+import avatarImage from "../../../images/avatar.png"
 
-const UserDetail = () => {
-
+export const useUserDetail = () => {
     const {id} = useParams();
     const [userInfo, setUserInfo] = useState({
         name: '',
@@ -23,24 +18,6 @@ const UserDetail = () => {
     });
 
     const [isLoading, setIsLoading] = useState(true)
-
-    useEffect(() => {
-        fetchUser();
-    }, []); // Fetch user when component mounts or id changes
-
-    const [component, setComponent] = useState(null);
-    const loadComponent = (componentName) => {
-        switch (componentName) {
-            case 'profile':
-                setComponent(<Profile userInfo={userInfo}/>);
-                break;
-            case 'moments':
-                setComponent(<Moments/>);
-                break;
-            default:
-                setComponent(null);
-        }
-    }
 
     const fetchUser = async () => {
         try {
@@ -65,21 +42,9 @@ const UserDetail = () => {
         }
     };
 
-
     useEffect(() => {
         fetchUser();
-        setComponent(<Profile userInfo={userInfo}/>)
-    }, [isLoading]);
+    }, []); // Fetch user when component mounts or id changes
 
-    return <>
-        {userInfo &&
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <UserBanner user={userInfo}/>
-                <UserTabs loadComponent={loadComponent} userInfo={userInfo}/>
-                {component}
-            </div>
-        }
-    </>
+    return {userInfo, isLoading, fetchUser};
 }
-
-export default UserDetail;

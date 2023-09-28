@@ -4,7 +4,6 @@ import colors from '../../../colors/colors';
 
 const buttons = ['Recent', 'Best', 'Learn', 'Nearby', 'Following', 'Help', 'Classmates', 'Voice']
 
-// Define your mapping here
 const buttonToParamMap = {
     'Recent': '',
     'Best': 'best_param',

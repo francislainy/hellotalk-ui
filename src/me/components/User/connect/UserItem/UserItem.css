@@ -1,0 +1,28 @@
+/* UserItem.css */
+.cardStyle {
+    display: flex;
+    margin-bottom: 1em;
+    border-radius: 15px;
+    align-items: center;
+    height: 100px;
+    padding: 1em;
+    box-sizing: border-box;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.avatarStyle {
+    margin-right: 1em;
+    height: 90%;
+    width: auto;
+}
+
+.buttonStyle {
+    background-color: #7B1FA2;
+    color: white;
+}
+
+.textStyle {
+    color: #7B1FA2;
+    font-weight: bold;
+}

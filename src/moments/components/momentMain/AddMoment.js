@@ -4,7 +4,6 @@ import colors from "../../../colors/colors";
 import {useAddMoment} from "../../hooks/useAddMoment";
 
 const AddMoment = () => {
-
     const {
         text,
         setText,

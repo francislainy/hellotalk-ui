@@ -1,14 +1,9 @@
-import React, {useEffect, useState} from 'react';
-import UserBanner from "./UserBanner";
-import Profile from "./Profile";
-import Moments from "../../../moments/components/Moments";
-import UserTabs from "./UserTabs";
+import {useState, useEffect} from 'react';
 import {getUser} from "../../../api/api";
 import {USER_ID} from "../../../constants/constants";
 import avatarImage from '../../../images/avatar.png'
 
-const User = () => {
-
+export const useUser = () => {
     const [userInfo, setUserInfo] = useState({
         name: '',
         avatar: '',
@@ -22,20 +17,6 @@ const User = () => {
     });
 
     const [isLoading, setIsLoading] = useState(true)
-
-    const [component, setComponent] = useState(null);
-    const loadComponent = (componentName) => {
-        switch (componentName) {
-            case 'profile':
-                setComponent(<Profile userInfo={userInfo}/>);
-                break;
-            case 'moments':
-                setComponent(<Moments/>);
-                break;
-            default:
-                setComponent(null);
-        }
-    }
 
     const fetchUser = async () => {
         try {
@@ -62,20 +43,7 @@ const User = () => {
 
     useEffect(() => {
         fetchUser();
-        setComponent(<Profile userInfo={userInfo}/>)
-    }, [isLoading]);
+    }, []); // Fetch user when component mounts
 
-    return (
-        <>
-            {userInfo &&
-                <>
-                    <UserBanner user={userInfo}/>
-                    <UserTabs loadComponent={loadComponent} userInfo={userInfo}/>
-                    {component}
-                </>
-            }
-        </>
-    );
+    return {userInfo, isLoading, fetchUser};
 }
-
-export default User;

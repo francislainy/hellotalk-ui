@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect';
 import {BrowserRouter, Route, Router} from 'react-router-dom';
 import Navigation from './Navigation';
 import Moments from "../screen/Moments";
-import Connect from "../screen/Connect.js";
+import UserList from "../screen/UserList.js";
 import Live from "../screen/Live";
 import Me from "../screen/Me";
 import Home from "../screen/Home";
@@ -28,7 +28,7 @@ test('renders navigation links', () => {
     const momentsLinkElement = screen.getByText(/Moments/i);
     expect(momentsLinkElement).toBeInTheDocument();
 
-    const connectLinkElement = screen.getByText(/Connect/i);
+    const connectLinkElement = screen.getByText(/UserList/i);
     expect(connectLinkElement).toBeInTheDocument();
 
     const liveLinkElement = screen.getByText(/Live/i);

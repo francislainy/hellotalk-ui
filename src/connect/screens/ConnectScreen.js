@@ -1,12 +1,12 @@
 import React from 'react';
-import Connect from "../../me/components/Connect";
+import UserList from "../../me/components/User/connect/UserList";
 
 const ConnectScreen = () => {
 
     return (
         <div>
             <h1>Connect</h1>
-            <Connect/>
+            <UserList/>
         </div>
     );
 }

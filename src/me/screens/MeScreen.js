@@ -3,7 +3,7 @@ import {useUser} from "../components/hooks/useUser";
 import UserProfile from "../components/User/profile/UserProfile";
 import Moments from "../../moments/components/Moments";
 import UserBanner from "../components/User/profile/UserBanner";
-import UserTabs from "../components/User/profile/UserTabs";
+import UserFilterTabs from "../components/User/profile/UserFilterTabs";
 
 const MeScreen = () => {
     const {userInfo, isLoading, fetchUser} = useUser();
@@ -32,7 +32,7 @@ const MeScreen = () => {
             {userInfo &&
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <UserBanner user={userInfo}/>
-                    <UserTabs loadComponent={loadComponent} userInfo={userInfo}/>
+                    <UserFilterTabs loadComponent={loadComponent} userInfo={userInfo}/>
                     {component}
                 </div>
             }

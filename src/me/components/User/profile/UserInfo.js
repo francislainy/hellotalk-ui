@@ -1,10 +1,10 @@
 import React from 'react'
-import ListTabsUserInfo from "./ListTabsUserInfo";
+import UserChipList from "./UserChipList";
 
 const UserInfo = ({sectionHeader, list}) => {
     return <>
         <h2>{sectionHeader}</h2>
-        <ListTabsUserInfo list={list}/>
+        <UserChipList list={list}/>
     </>
 }
 

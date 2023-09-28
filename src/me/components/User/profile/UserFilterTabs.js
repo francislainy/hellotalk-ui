@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Button} from "@mui/material";
 import colors from "../../../../colors/colors";
 
-const UserTabs = ({loadComponent}) => {
+const UserFilterTabs = ({loadComponent}) => {
     const [selectedTab, setSelectedTab] = useState('profile');
 
     const handleButtonClick = (tabName) => {
@@ -27,4 +27,4 @@ const UserTabs = ({loadComponent}) => {
     </div>
 }
 
-export default UserTabs;
+export default UserFilterTabs;

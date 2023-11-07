@@ -7,7 +7,7 @@
   }
 
 /* ChatItem.css */
-.message, .reply {
+.me, .other {
     display: flex;
     align-items: flex-start;
     max-width: 80%;
@@ -21,20 +21,20 @@
     flex-grow: 1;
 }
 
-.message {
+.me {
     flex-direction: row;
 }
 
-.message .text {
+.me .text {
     background-color: var(--chatItemBackground);
     margin-left: 10px;
 }
 
-.reply {
+.other {
     flex-direction: row-reverse;
 }
 
-.reply .text {
+.other .text {
     background-color: var(--replyBackground);
     margin-right: 10px;
     margin-left: 0;

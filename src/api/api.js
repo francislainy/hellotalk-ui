@@ -64,3 +64,11 @@ export const getFollowshipFromUser = (userId) => {
 export const deleteFollowship = (followshipId) => {
     return api.delete(`followship/${followshipId}`);
 };
+
+export const getChats = (id) => {
+    return api.get(`messages/chats/`);
+};
+
+export const getChat = (id) => {
+    return api.get(`messages/chats/${id}/`);
+};

@@ -1,32 +1,29 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {Avatar, Button, List, ListItem, ListItemAvatar, ListItemText, TextField} from '@mui/material';
 import avatarImage from '../../../images/avatar.png'
 import ChatDetails from "../ChatDetails/ChatDetails";
 import colors from "../../../colors/colors";
+import {getChats} from "../../../api/api";
 
 const ChatInterface = () => {
     // Assuming you have a list of chat data
     const [selectedChat, setSelectedChat] = useState(0); // State to keep track of the selected chat item
     const [newMessage, setNewMessage] = useState(''); // State to keep track of the new message
 
-    const chats = [
-        {
-            name: 'User 1',
-            avatar: 'url_to_avatar_image',
-            latestMessage: 'Hello, this is the latest message from user 1',
-        },
-        {
-            name: 'User 2',
-            avatar: 'url_to_avatar_image',
-            latestMessage: 'Hello, this is user 2',
-        },
-        {
-            name: 'User 3',
-            avatar: 'url_to_avatar_image',
-            latestMessage: 'Hello, I am user 3',
-        },
-        // Add more chat data here...
-    ];
+    const [chats, setChats] = useState([])
+
+    const fetchChats = async () => {
+        try {
+            const response = await getChats();
+            setChats(response.data);
+        } catch (error) {
+            alert(error)
+        }
+    };
+
+    useEffect(() => {
+        fetchChats();
+    }, []);
 
     const handleChatItemClick = (index) => {
         setSelectedChat(index);
@@ -53,11 +50,12 @@ const ChatInterface = () => {
                         onClick={() => handleChatItemClick(index)}
                     >
                         <ListItemAvatar>
-                            <Avatar alt={chat.name} src={avatarImage} sx={{width: 50, height: 50}}/>
+                            {/*<Avatar alt={chat.name} src={avatarImage} sx={{width: 50, height: 50}}/>*/}
+                            <Avatar  src={avatarImage} sx={{width: 50, height: 50}}/>
                         </ListItemAvatar>
                         <ListItemText
-                            primary={chat.name}
-                            secondary={chat.latestMessage}
+                            primary={chat.participants.length > 0 ? chat.participants[0].id : 'Default Value'}
+                            secondary={chat.messages[0].content}
                             sx={{fontSize: '2.5em'}} // increase the font size
                         />
                     </ListItem>

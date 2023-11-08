@@ -4,6 +4,7 @@ import avatarImage from '../../../images/avatar.png'
 import ChatDetails from "../ChatDetails/ChatDetails";
 import colors from "../../../colors/colors";
 import {getChats} from "../../../api/api";
+import {USER_ID} from "../../../constants/constants";
 
 const ChatInterface = () => {
     // Assuming you have a list of chat data
@@ -42,24 +43,27 @@ const ChatInterface = () => {
     return (
         <div style={{display: 'flex'}}>
             <List>
-                {chats.map((chat, index) => (
-                    <ListItem
-                        key={index}
-                        button
-                        selected={selectedChat === index}
-                        onClick={() => handleChatItemClick(index)}
-                    >
-                        <ListItemAvatar>
-                            {/*<Avatar alt={chat.name} src={avatarImage} sx={{width: 50, height: 50}}/>*/}
-                            <Avatar  src={avatarImage} sx={{width: 50, height: 50}}/>
-                        </ListItemAvatar>
-                        <ListItemText
-                            primary={chat.participants.length > 0 ? chat.participants[0].id : 'Default Value'}
-                            secondary={chat.messages[0].content}
-                            sx={{fontSize: '2.5em'}} // increase the font size
-                        />
-                    </ListItem>
-                ))}
+                {chats.map((chat, index) => {
+                    // Find the participant who is not the current user
+                    const otherParticipant = chat.participants.find(participant => participant.id !== USER_ID);
+                    return (
+                        <ListItem
+                            key={index}
+                            button
+                            selected={selectedChat === index}
+                            onClick={() => handleChatItemClick(index)}
+                        >
+                            <ListItemAvatar>
+                                <Avatar src={avatarImage} sx={{width: 50, height: 50}}/>
+                            </ListItemAvatar>
+                            <ListItemText
+                                primary={otherParticipant ? otherParticipant.id : 'Default Value'}
+                                secondary={chat.messages[0].content} // Most recent message
+                                sx={{fontSize: '2.5em'}} // increase the font size
+                            />
+                        </ListItem>
+                    );
+                })}
             </List>
             <div style={{flex: 2, marginLeft: '60px'}}>
                 <ChatDetails chat={chats[selectedChat]}/>

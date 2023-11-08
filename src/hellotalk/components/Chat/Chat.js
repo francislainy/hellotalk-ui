@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ChatDetails from "../ChatDetails/ChatDetails";
-import {getChats} from "../../../api/api";
+import {createMessage, getChats} from "../../../api/api";
 import AddMessage from "../AddMessage/AddMessage";
 import ChatList from "../ChatList/ChatList";
 
@@ -38,6 +38,23 @@ const ChatInterface = () => {
         // For example, you can add it to the selected chat's messages
     };
 
+    const handleCreateMessage = () => {
+        const message = {
+            content: newMessage,
+            userToId: 'd3256c76-62d7-4481-9d1c-a0ccc4da380f'
+        }
+
+        createMessage(message)
+            .then(response => {
+                // alert("success")
+                setNewMessage('')
+                fetchChats();
+            })
+            .catch(error => {
+                alert(error)
+            });
+    };
+
     return (
         <div style={{display: 'flex'}}>
             <ChatList
@@ -48,6 +65,7 @@ const ChatInterface = () => {
             <div style={{flex: 2, marginLeft: '60px'}}>
                 <ChatDetails chat={chats[selectedChat]}/>
                 <AddMessage
+                    handleCreateMessage={handleCreateMessage}
                     handleNewMessageChange={handleNewMessageChange}
                     newMessage={newMessage}
                     handleNewMessageSubmit={handleNewMessageSubmit}

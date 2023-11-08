@@ -72,3 +72,7 @@ export const getChats = (id) => {
 export const getChat = (id) => {
     return api.get(`messages/chats/${id}/`);
 };
+
+export const createMessage = (message) => {
+    return api.post('messages/', message);
+};

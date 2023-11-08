@@ -3,7 +3,6 @@ import colors from "../../../colors/colors";
 import React from "react";
 
 const AddMessage = ({handleCreateMessage, handleNewMessageChange, newMessage, handleNewMessageSubmit}) => {
-
     return (<form onSubmit={handleNewMessageSubmit} sx={{marginTop: 2}}>
             <TextField
                 value={newMessage}

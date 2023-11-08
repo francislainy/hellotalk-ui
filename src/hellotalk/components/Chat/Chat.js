@@ -3,6 +3,7 @@ import ChatDetails from "../ChatDetails/ChatDetails";
 import {createMessage, getChats} from "../../../api/api";
 import AddMessage from "../AddMessage/AddMessage";
 import ChatList from "../ChatList/ChatList";
+import {USER_ID} from "../../../constants/constants";
 
 const ChatInterface = () => {
     // Assuming you have a list of chat data
@@ -39,9 +40,12 @@ const ChatInterface = () => {
     };
 
     const handleCreateMessage = () => {
+        const otherParticipant = chats[selectedChat] !== undefined
+            && chats[selectedChat].participants.find(participant => participant.id !== USER_ID);
+
         const message = {
             content: newMessage,
-            userToId: 'd3256c76-62d7-4481-9d1c-a0ccc4da380f'
+            userToId: otherParticipant.id
         }
 
         createMessage(message)

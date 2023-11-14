@@ -9,7 +9,7 @@ const ChatDetails = ({chat}) => {
         <div>
             {(chat !== undefined && chat.messages.length > 0) && (
                 <div>
-                    <h2>{chat.messages[0] ? otherParticipant.id : "No messages in chat"}</h2>
+                    <h2>{chat.messages[0] ? otherParticipant.name : "No messages in chat"}</h2>
                     {chat.messages.map((message, index) => (
                         <ChatItem chat={chat} message={message} index={index} key={index}/>
                     ))}

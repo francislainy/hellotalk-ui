@@ -20,7 +20,7 @@ const ChatList = ({chats, selectedChat, handleChatItemClick}) => {
                             <Avatar src={avatarImage} sx={{width: 50, height: 50}}/>
                         </ListItemAvatar>
                         <ListItemText
-                            primary={otherParticipant ? otherParticipant.id : 'Default Value'}
+                            primary={otherParticipant ? otherParticipant.name : 'Default Value'}
                             secondary={chat.messages[0].content} // Most recent message
                             sx={{fontSize: '2.5em'}} // increase the font size
                         />

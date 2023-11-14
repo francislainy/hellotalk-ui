@@ -6,6 +6,7 @@ import avatarImage from "../../images/avatar.png"
 export const useUserDetail = () => {
     const {id} = useParams();
     const [userInfo, setUserInfo] = useState({
+        id: '',
         name: '',
         avatar: '',
         latestMessage: '',
@@ -25,6 +26,7 @@ export const useUserDetail = () => {
             const data = response.data;
 
             setUserInfo({
+                id: data.id,
                 selfIntroduction: data.selfIntroduction,
                 interests: data.hobbyAndInterests,
                 placesToVisit: data.placesToVisit ? [data.placesToVisit] : [],

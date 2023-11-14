@@ -17,13 +17,14 @@ const UserFilterTabs = ({loadComponent}) => {
                 backgroundColor: selectedTab === tabName ? colors.darkPurple : colors.white,
             },
             color: selectedTab === tabName ? colors.white : colors.darkPurple,
-            marginRight: tabName === 'profile' ? "8px" : "0px"
+            marginRight: tabName === 'profile' || 'moments' ? "8px" : "0px",
         }} onClick={() => handleButtonClick(tabName)}>{label}</Button>
     );
 
     return <div style={{display: 'flex', justifyContent: 'space-between', marginTop: "50px"}}>
         {renderButton('profile', 'Profile')}
         {renderButton('moments', 'Moments')}
+        {renderButton('sayHi', 'Say Hi')}
     </div>
 }
 

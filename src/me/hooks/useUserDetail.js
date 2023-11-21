@@ -10,7 +10,7 @@ export const useUserDetail = () => {
         name: '',
         avatar: '',
         latestMessage: '',
-        selfIntroduction: [],
+        selfIntroduction: '',
         hobbyAndInterests: [],
         interests: [],
         placesToVisit: [],

@@ -9,7 +9,7 @@ export const useUser = () => {
         name: '',
         avatar: '',
         latestMessage: '',
-        selfIntroduction: [],
+        selfIntroduction: '',
         hobbyAndInterests: [],
         interests: [],
         placesToVisit: [],

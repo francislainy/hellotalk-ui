@@ -8,7 +8,7 @@ const UserProfile = ({userInfo}) => {
             <SelfIntroduction selfIntroduction={userInfo.selfIntroduction}/>
             <UserInfo sectionHeader={'My Hometown'} list={userInfo.hometown}/>
             <UserInfo sectionHeader={'My Occupation'} list={userInfo.occupation}/>
-            <UserInfo sectionHeader={'Interest & Hobbies'} list={userInfo.interests}/>
+            <UserInfo sectionHeader={'Interest & Hobbies'} list={userInfo.hobbyAndInterests}/>
             <UserInfo sectionHeader={'Places I want to go'} list={userInfo.placesToVisit}/>
         </>
     );

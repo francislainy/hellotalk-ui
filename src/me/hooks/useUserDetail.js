@@ -12,7 +12,6 @@ export const useUserDetail = () => {
         latestMessage: '',
         selfIntroduction: '',
         hobbyAndInterests: [],
-        interests: [],
         placesToVisit: [],
         occupation: [],
         hometown: [],
@@ -28,7 +27,7 @@ export const useUserDetail = () => {
             setUserInfo({
                 id: data.id,
                 selfIntroduction: data.selfIntroduction,
-                interests: data.hobbyAndInterests,
+                hobbyAndInterests: data.hobbyAndInterests,
                 placesToVisit: data.placesToVisit ? [data.placesToVisit] : [],
                 occupation: data.occupation ? [data.occupation] : [],
                 hometown: data.hometown ? [data.hometown.city, data.hometown.country] : [],

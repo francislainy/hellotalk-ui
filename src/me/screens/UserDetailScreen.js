@@ -1,15 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import UserBanner from "../components/profile/UserBanner";
 import UserFilterTabs from "../components/profile/UserFilterTabs";
 import UserProfile from "../components/profile/UserProfile";
 import Moments from "../../moments/components/Moments";
-import {useUserDetail} from "../hooks/useUserDetail";
-import {useNavigate} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {createMessage} from "../../api/api";
+import {useUser} from "../hooks/useUser";
 
 const UserDetailScreen = () => {
+    const { id } = useParams();
     const navigate = useNavigate()
-    const {userInfo, isLoading, fetchUser} = useUserDetail();
+    const {userInfo, isLoading, fetchUser} = useUser(id);
     const [component, setComponent] = useState(null);
 
     const message = {

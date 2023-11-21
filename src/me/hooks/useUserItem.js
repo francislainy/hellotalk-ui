@@ -23,11 +23,7 @@ export const useUserItem = (user, handleCreateFollowship, handleDeleteFollowship
 
     const handleButtonText = async () => {
         const followship = followships.find(followship => followship.userToId === user.id);
-        if (followship) {
-            setFollowButtonText('Following')
-        } else {
-            setFollowButtonText('Follow')
-        }
+        setFollowButtonText(followship ? 'Following' : 'Follow');
     };
 
     useEffect(() => {

@@ -3,7 +3,7 @@ import {getUser} from "../../api/api";
 import {USER_ID} from "../../constants/constants";
 import avatarImage from '../../images/avatar.png'
 
-export const useUser = () => {
+export const useUser = (id = USER_ID) => {
     const [userInfo, setUserInfo] = useState({
         id: '',
         name: '',
@@ -20,7 +20,7 @@ export const useUser = () => {
 
     const fetchUser = async () => {
         try {
-            const response = await getUser(USER_ID);
+            const response = await getUser(id);
             const data = response.data;
 
             setUserInfo({
@@ -44,7 +44,7 @@ export const useUser = () => {
 
     useEffect(() => {
         fetchUser();
-    }, []); // Fetch user when component mounts
+    }, [id]); // Fetch user when component mounts or id changes
 
     return {userInfo, isLoading, fetchUser};
 }

@@ -8,7 +8,7 @@ const UserChipList = ({list}) => {
         {list.map((item, index) => (
             <Chip
                 key={index}
-                label={item}
+                label={typeof item === 'object' ? item.title : item}
                 sx={{backgroundColor: colors.primary, color: colors.white, margin: 1}}
             />
         ))}

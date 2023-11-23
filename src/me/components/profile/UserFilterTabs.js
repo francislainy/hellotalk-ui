@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import {Button} from "@mui/material";
 import colors from "../../../colors/colors";
+import {USER_ID} from "../../../constants/constants";
 
-const UserFilterTabs = ({loadComponent}) => {
+const UserFilterTabs = ({loadComponent, userInfo}) => {
     const [selectedTab, setSelectedTab] = useState('profile');
 
     const handleButtonClick = (tabName) => {
@@ -24,7 +25,7 @@ const UserFilterTabs = ({loadComponent}) => {
     return <div style={{display: 'flex', justifyContent: 'space-between', marginTop: "50px"}}>
         {renderButton('profile', 'Profile')}
         {renderButton('moments', 'Moments')}
-        {renderButton('sayHi', 'Say Hi')}
+        {userInfo.id !== USER_ID && renderButton('sayHi', 'Say Hi')}
     </div>
 }
 

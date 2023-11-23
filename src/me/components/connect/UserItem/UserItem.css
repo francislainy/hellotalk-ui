@@ -18,11 +18,18 @@
 }
 
 .buttonStyle {
-    background-color: #7B1FA2;
-    color: white;
+    && {
+        background-color: #9C27B0;
+        color: white;
+        &:hover {
+            background-color: #7B1FA2;
+        }
+    }
 }
 
 .textStyle {
-    color: #7B1FA2;
-    font-weight: bold;
+    && {
+        color: #7B1FA2;
+        font-weight: bold;
+    }
 }

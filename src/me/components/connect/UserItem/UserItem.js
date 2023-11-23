@@ -4,7 +4,6 @@ import avatarImage from "../../../../images/avatar.png";
 import {useNavigate} from "react-router-dom";
 import {useUserItem} from '../../../hooks/useUserItem';
 import './UserItem.css';
-
 const UserItem = ({user, handleCreateFollowship, handleDeleteFollowship, followships}) => {
     const navigate = useNavigate()
 

@@ -6,19 +6,11 @@ export const useUserItem = (user, handleCreateFollowship, handleDeleteFollowship
 
     const handleIsFollowing = async () => {
         const followship = followships.find(followship => followship.userToId === user.id);
-        if (followship) {
-            return handleDeleteFollowship(followship.id)
-                .then(() => {
-                    setFollowButtonText('Following')
-                    setIsFollowing(false)
-                });
-        } else {
-            return handleCreateFollowship(user.id)
-                .then(() => {
-                    setFollowButtonText('Follow')
-                    setIsFollowing(true)
-                });
-        }
+        const action = followship? handleDeleteFollowship(followship.id) : handleCreateFollowship(user.id)
+
+        return action.then(() => {
+            setIsFollowing(!followship)
+        });
     };
 
     const handleButtonText = async () => {

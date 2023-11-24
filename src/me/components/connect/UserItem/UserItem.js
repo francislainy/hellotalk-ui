@@ -9,7 +9,7 @@ const UserItem = ({user, handleCreateFollowship, handleDeleteFollowship, follows
 
     const {
         followButtonText,
-        handleIsFollowing
+        handleFollow
     } = useUserItem(user, handleCreateFollowship, handleDeleteFollowship, followships);
 
     const handleOnClickAvatar = () => {
@@ -25,7 +25,7 @@ const UserItem = ({user, handleCreateFollowship, handleDeleteFollowship, follows
                 </Typography>
                 <Typography variant="body2">{user.description}</Typography>
                 <Button className="buttonStyle" variant="contained" size="small"
-                        onClick={handleIsFollowing}>
+                        onClick={handleFollow}>
                     {followButtonText}
                 </Button>
             </CardContent>

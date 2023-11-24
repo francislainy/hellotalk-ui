@@ -77,6 +77,10 @@ export const createMessage = (message) => {
     return api.post('messages/', message);
 };
 
+export const updateMessage = (messageId, content) => {
+    return api.put(`messages/${messageId}`, {content});
+};
+
 export const deleteMessage = (messageId) => {
     return api.delete(`messages/${messageId}`);
 };

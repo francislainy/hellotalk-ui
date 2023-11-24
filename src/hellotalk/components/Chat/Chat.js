@@ -13,7 +13,10 @@ const ChatInterface = () => {
         handleNewMessageChange,
         handleCreateMessage,
         handleDelete,
-    } = useChat();
+    } = useChat('');
+
+    // Add a key that changes every time a chat message is updated
+    const chatKey = chats[selectedChat]?.lastUpdated;
 
     return (
         <div style={{display: 'flex'}}>
@@ -23,8 +26,11 @@ const ChatInterface = () => {
                 handleChatItemClick={handleChatItemClick}
             />
             <div style={{flex: 2, marginLeft: '60px'}}>
-                <ChatDetails chat={chats[selectedChat]}
-                             handleDelete={handleDelete}/>
+                <ChatDetails
+                    key={chatKey}  // Pass the key here
+                    chat={chats[selectedChat]}
+                    handleDelete={handleDelete}
+                />
                 <AddMessage
                     handleCreateMessage={handleCreateMessage}
                     handleNewMessageChange={handleNewMessageChange}
@@ -34,6 +40,7 @@ const ChatInterface = () => {
         </div>
     );
 }
+
 
 export default ChatInterface;
 

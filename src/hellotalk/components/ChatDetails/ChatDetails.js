@@ -10,9 +10,9 @@ const ChatDetails = ({chat, handleDelete}) => {
                 <div>
                     <h2>{chat.messages[0] ? otherParticipant.name : "No messages in chat"}</h2>
                     {chat.messages.map((message, index) => (
-                        <ChatItem chat={chat}
+                        <ChatItem
                                   message={message}
-                                  deleteMessage={() => handleDelete(message.id)}
+                                  handleDelete={() => handleDelete(message.id)}
                                   index={index}
                                   key={index}/>
                     ))}

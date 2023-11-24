@@ -1,4 +1,3 @@
-// src/hooks/useMomentDetail.js
 import {useState, useEffect} from 'react';
 import {useParams, useNavigate} from 'react-router-dom';
 import {getMoment, getCommentsForMoment, deleteMoment, updateMoment, createComment} from '../../api/api';

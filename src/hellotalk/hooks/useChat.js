@@ -1,11 +1,14 @@
 import {useEffect, useState} from 'react';
-import {createMessage, deleteMessage, getChats} from "../../api/api";
+import {createMessage, deleteMessage, getChats, updateComment, updateMessage} from "../../api/api";
 import {USER_ID} from "../../constants/constants";
 
-const useChat = () => {
+const useChat = (message) => {
     const [selectedChat, setSelectedChat] = useState(0);
     const [newMessage, setNewMessage] = useState('');
     const [chats, setChats] = useState([])
+
+    const [isEditing, setIsEditing] = useState(false);
+    const [updatedContent, setUpdatedContent] = useState(message.content);
 
     const fetchChats = async () => {
         try {
@@ -54,14 +57,32 @@ const useChat = () => {
         }
     };
 
+    const handleUpdate = async () => {
+        if (isEditing) {
+            await updateMessage(message.id, updatedContent)
+            setIsEditing(!isEditing);
+            await fetchChats();
+        }
+    };
+
+    const handleCloseUpdate = () => {
+        setIsEditing(!isEditing);
+    };
+
     return {
         selectedChat,
         newMessage,
         chats,
+        isEditing,
+        setIsEditing,
+        updatedContent,
+        setUpdatedContent,
         handleChatItemClick,
         handleNewMessageChange,
         handleCreateMessage,
-        handleDelete
+        handleDelete,
+        handleCloseUpdate,
+        handleUpdate,
     }
 }
 

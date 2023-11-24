@@ -1,27 +1,51 @@
 import React from 'react';
+
 import avatarImage from '../../../images/avatar.png'
-import {Avatar, Box, Typography} from "@mui/material";
+import {Avatar, Box, IconButton, TextField, Typography} from "@mui/material";
 import './ChatItem.css';
 import {USER_ID} from "../../../constants/constants";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-import { IconButton } from '@mui/material'; // Import IconButton from @mui/material
-import EditIcon from '@mui/icons-material/Edit'; // Import EditIcon from @mui/icons-material
-import DeleteIcon from '@mui/icons-material/Delete'; // Import DeleteIcon from @mui/icons-material
+import SaveIcon from '@mui/icons-material/Save';
+import CloseIcon from '@mui/icons-material/Close';
+import useChat from "../../hooks/useChat";
 
-const ChatItem = ({chat, message, index, editMessage, deleteMessage}) => {
+const ChatItem = ({message, index, handleDelete}) => {
     const messageType = message.userFromId === USER_ID ? 'me' : 'other';
+
+    const {
+        handleCloseUpdate,
+        handleUpdate,
+        isEditing,
+        setIsEditing,
+        updatedContent,
+        setUpdatedContent,
+    } = useChat(message)
 
     return (
         <Box key={index} className={messageType}>
-            <Avatar src={avatarImage} className="avatar"  sx={{width: 32, height: 32}}/>
-            <Typography className="text">{message.content}</Typography>
-            {messageType === 'me' && (
+            <Avatar src={avatarImage} className="avatar" sx={{width: 32, height: 32}}/>
+            {isEditing ? (
                 <div>
-                    <IconButton onClick={() => editMessage(index)}>
-                        <EditIcon />
+                    <TextField value={updatedContent} onChange={(e) => setUpdatedContent(e.target.value)}/>
+                    <IconButton onClick={handleUpdate}>
+                        <SaveIcon/>
                     </IconButton>
-                    <IconButton onClick={() => deleteMessage(index)}>
-                        <DeleteIcon />
+                    <IconButton onClick={handleCloseUpdate}>
+                        <CloseIcon/>
+                    </IconButton>
+                </div>
+            ) : (
+                <Typography className="text">{message.content}</Typography>
+            )}
+            {messageType === 'me' && !isEditing && (
+                <div>
+                    <IconButton onClick={() => setIsEditing(true)}>
+                        <EditIcon/>
+                    </IconButton>
+                    <IconButton onClick={() => handleDelete(index)}>
+                        <DeleteIcon/>
                     </IconButton>
                 </div>
             )}

@@ -1,26 +1,19 @@
 import {useState, useEffect} from 'react';
 
 export const useUserItem = (user, handleCreateFollowship, handleDeleteFollowship, followships) => {
-    const [isFollowing, setIsFollowing] = useState()
-    const [followButtonText, setFollowButtonText] = useState()
+    const [followButtonText, setFollowButtonText] = useState('Follow');
+
+    useEffect(() => {
+        const followship = followships.find(followship => followship.userToId === user.id);
+        setFollowButtonText(followship ? 'Following' : 'Follow');
+    }, [followships]);
 
     const handleFollow = async () => {
         const followship = followships.find(followship => followship.userToId === user.id);
         const action = followship ? handleDeleteFollowship(followship.id) : handleCreateFollowship(user.id)
 
-        return action.then(() => {
-            setIsFollowing(!followship)
-        });
+        return action.then(() => {});
     };
 
-    const handleButtonText = async () => {
-        const followship = followships.find(followship => followship.userToId === user.id);
-        setFollowButtonText(followship ? 'Following' : 'Follow');
-    };
-
-    useEffect(() => {
-        handleButtonText()
-    }, [isFollowing])
-
-    return {isFollowing, followButtonText, handleFollow};
+    return {followButtonText, handleFollow};
 };

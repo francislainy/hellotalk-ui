@@ -44,7 +44,7 @@ const ChatItem = ({message, index, handleDelete}) => {
                     <IconButton onClick={() => setIsEditing(true)}>
                         <EditIcon/>
                     </IconButton>
-                    <IconButton onClick={() => handleDelete(index)}>
+                    <IconButton onClick={handleDelete}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>

@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {createMessage, deleteMessage, getChats, updateComment, updateMessage} from "../../api/api";
+import {createMessage, deleteMessage, getChats, updateMessage} from "../../api/api";
 import {USER_ID} from "../../constants/constants";
 
 const useChat = (message) => {

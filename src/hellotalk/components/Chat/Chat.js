@@ -15,9 +15,6 @@ const ChatInterface = () => {
         handleDelete,
     } = useChat('');
 
-    // Add a key that changes every time a chat message is updated
-    const chatKey = chats[selectedChat]?.lastUpdated;
-
     return (
         <div style={{display: 'flex'}}>
             <ChatList
@@ -27,7 +24,6 @@ const ChatInterface = () => {
             />
             <div style={{flex: 2, marginLeft: '60px'}}>
                 <ChatDetails
-                    key={chatKey}  // Pass the key here
                     chat={chats[selectedChat]}
                     handleDelete={handleDelete}
                 />
@@ -40,7 +36,6 @@ const ChatInterface = () => {
         </div>
     );
 }
-
 
 export default ChatInterface;
 

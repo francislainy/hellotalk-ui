@@ -1,5 +1,5 @@
 import {useEffect, useState} from 'react';
-import {createMessage, getChats} from "../../api/api";
+import {createMessage, deleteMessage, getChats} from "../../api/api";
 import {USER_ID} from "../../constants/constants";
 
 const useChat = () => {
@@ -47,13 +47,21 @@ const useChat = () => {
             });
     };
 
+    const handleDelete = async (messageId) => {
+        if (window.confirm('Are you sure you want to delete this message?')) {
+            await deleteMessage(messageId);
+            await fetchChats();
+        }
+    };
+
     return {
         selectedChat,
         newMessage,
         chats,
         handleChatItemClick,
         handleNewMessageChange,
-        handleCreateMessage
+        handleCreateMessage,
+        handleDelete
     }
 }
 

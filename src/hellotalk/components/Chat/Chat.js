@@ -11,7 +11,8 @@ const ChatInterface = () => {
         chats,
         handleChatItemClick,
         handleNewMessageChange,
-        handleCreateMessage
+        handleCreateMessage,
+        handleDelete,
     } = useChat();
 
     return (
@@ -22,7 +23,8 @@ const ChatInterface = () => {
                 handleChatItemClick={handleChatItemClick}
             />
             <div style={{flex: 2, marginLeft: '60px'}}>
-                <ChatDetails chat={chats[selectedChat]}/>
+                <ChatDetails chat={chats[selectedChat]}
+                             handleDelete={handleDelete}/>
                 <AddMessage
                     handleCreateMessage={handleCreateMessage}
                     handleNewMessageChange={handleNewMessageChange}

@@ -76,3 +76,7 @@ export const getChat = (id) => {
 export const createMessage = (message) => {
     return api.post('messages/', message);
 };
+
+export const deleteMessage = (messageId) => {
+    return api.delete(`messages/${messageId}`);
+};

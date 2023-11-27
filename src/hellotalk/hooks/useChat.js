@@ -9,6 +9,7 @@ const useChat = (message) => {
 
     const [isEditing, setIsEditing] = useState(false);
     const [updatedContent, setUpdatedContent] = useState(message.content);
+    const [isAnyItemEditing, setIsAnyItemEditing] = useState(false);
 
     const fetchChats = async () => {
         try {
@@ -77,6 +78,8 @@ const useChat = (message) => {
         chats,
         isEditing,
         setIsEditing,
+        isAnyItemEditing,
+        setIsAnyItemEditing,
         updatedContent,
         setUpdatedContent,
         handleChatItemClick,

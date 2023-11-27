@@ -1,14 +1,17 @@
 import React from 'react';
 import ChatItem from '../ChatItem/ChatItem';
 import {USER_ID} from "../../../constants/constants";
+import useChat from "../../hooks/useChat";
 
 const ChatDetails = ({
                          chat, handleDelete,
                          handleUpdate,
                          updatedContent,
-                         setUpdatedContent
+                         setUpdatedContent,
                      }) => {
     const otherParticipant = chat !== undefined && chat.participants.find(participant => participant.id !== USER_ID);
+
+    const {isAnyItemEditing, setIsAnyItemEditing} = useChat('');
 
     return (
         <div>
@@ -21,6 +24,8 @@ const ChatDetails = ({
                             handleDelete={() => handleDelete(message.id)}
                             index={index}
                             key={index}
+                            isAnyItemEditing={isAnyItemEditing}
+                            setIsAnyItemEditing={setIsAnyItemEditing}
                             handleUpdate={handleUpdate}
                             updatedContent={updatedContent}
                             setUpdatedContent={setUpdatedContent}

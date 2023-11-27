@@ -16,8 +16,10 @@ const ChatItem = ({
                       handleUpdate,
                       updatedContent,
                       setUpdatedContent,
+                      isAnyItemEditing,
+                      setIsAnyItemEditing
                   }) => {
-    const {isEditing, setIsEditing} = useChat(message); // Move isEditing state here
+    const {isEditing, setIsEditing} = useChat(message);
     const messageType = message.userFromId === USER_ID ? 'me' : 'other';
 
     return (
@@ -26,10 +28,10 @@ const ChatItem = ({
             {isEditing ? (
                 <div>
                     <TextField value={updatedContent} onChange={(e) => setUpdatedContent(e.target.value)}/>
-                    <IconButton onClick={() => { handleUpdate(message.id, updatedContent); setIsEditing(false); }}>
+                    <IconButton onClick={() => { handleUpdate(message.id, updatedContent); setIsEditing(false); setIsAnyItemEditing(false); }}>
                         <SaveIcon/>
                     </IconButton>
-                    <IconButton onClick={() => setIsEditing(false)}>
+                    <IconButton onClick={() => { setIsEditing(false); setIsAnyItemEditing(false); }}>
                         <CloseIcon/>
                     </IconButton>
                 </div>
@@ -38,7 +40,7 @@ const ChatItem = ({
             )}
             {messageType === 'me' && !isEditing && (
                 <div>
-                    <IconButton onClick={() => setIsEditing(true)}>
+                    <IconButton onClick={() => { if (!isAnyItemEditing) setIsEditing(true); setIsAnyItemEditing(true); }}>
                         <EditIcon/>
                     </IconButton>
                     <IconButton onClick={() => handleDelete(message.id)}>

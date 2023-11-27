@@ -1,10 +1,9 @@
 import React from 'react';
 import ChatItem from '../ChatItem/ChatItem';
 import {USER_ID} from "../../../constants/constants";
-import useChat from "../../hooks/useChat";
 
 const ChatDetails = ({
-                         chat, handleDelete, handleCloseUpdate,
+                         chat, handleDelete,
                          handleUpdate,
                          updatedContent,
                          setUpdatedContent
@@ -22,7 +21,6 @@ const ChatDetails = ({
                             handleDelete={() => handleDelete(message.id)}
                             index={index}
                             key={index}
-                            handleCloseUpdate={handleCloseUpdate}
                             handleUpdate={handleUpdate}
                             updatedContent={updatedContent}
                             setUpdatedContent={setUpdatedContent}

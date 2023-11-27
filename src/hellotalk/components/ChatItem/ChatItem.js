@@ -12,7 +12,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import useChat from "../../hooks/useChat";
 
 const ChatItem = ({
-                      message, index, handleDelete, handleCloseUpdate,
+                      message, index, handleDelete,
                       handleUpdate,
                       updatedContent,
                       setUpdatedContent,

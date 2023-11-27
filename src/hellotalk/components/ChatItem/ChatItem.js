@@ -28,19 +28,29 @@ const ChatItem = ({
             {isEditing ? (
                 <div>
                     <TextField value={updatedContent} onChange={(e) => setUpdatedContent(e.target.value)}/>
-                    <IconButton onClick={() => { handleUpdate(message.id, updatedContent); setIsEditing(false); setIsAnyItemEditing(false); }}>
+                    <IconButton onClick={() => {
+                        handleUpdate(message.id, updatedContent);
+                        setIsEditing(false);
+                        setIsAnyItemEditing(false);
+                    }}>
                         <SaveIcon/>
                     </IconButton>
-                    <IconButton onClick={() => { setIsEditing(false); setIsAnyItemEditing(false); }}>
+                    <IconButton onClick={() => {
+                        setIsEditing(false);
+                        setIsAnyItemEditing(false);
+                    }}>
                         <CloseIcon/>
                     </IconButton>
                 </div>
             ) : (
                 <Typography className="text">{message.content}</Typography>
             )}
-            {messageType === 'me' && !isEditing && (
+            {messageType === 'me' && !isEditing && !isAnyItemEditing && (
                 <div>
-                    <IconButton onClick={() => { if (!isAnyItemEditing) setIsEditing(true); setIsAnyItemEditing(true); }}>
+                    <IconButton onClick={() => {
+                        setIsEditing(true);
+                        setIsAnyItemEditing(true);
+                    }}>
                         <EditIcon/>
                     </IconButton>
                     <IconButton onClick={() => handleDelete(message.id)}>

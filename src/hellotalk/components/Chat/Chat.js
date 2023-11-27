@@ -13,6 +13,10 @@ const ChatInterface = () => {
         handleNewMessageChange,
         handleCreateMessage,
         handleDelete,
+        handleCloseUpdate,
+        handleUpdate,
+        updatedContent,
+        setUpdatedContent,
     } = useChat('');
 
     return (
@@ -26,6 +30,10 @@ const ChatInterface = () => {
                 <ChatDetails
                     chat={chats[selectedChat]}
                     handleDelete={handleDelete}
+                    handleCloseUpdate={handleCloseUpdate}
+                    handleUpdate={handleUpdate}
+                    updatedContent={updatedContent}
+                    setUpdatedContent={setUpdatedContent}
                 />
                 <AddMessage
                     handleCreateMessage={handleCreateMessage}

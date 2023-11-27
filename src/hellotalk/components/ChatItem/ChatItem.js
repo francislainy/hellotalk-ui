@@ -11,17 +11,14 @@ import SaveIcon from '@mui/icons-material/Save';
 import CloseIcon from '@mui/icons-material/Close';
 import useChat from "../../hooks/useChat";
 
-const ChatItem = ({message, index, handleDelete}) => {
+const ChatItem = ({
+                      message, index, handleDelete, handleCloseUpdate,
+                      handleUpdate,
+                      updatedContent,
+                      setUpdatedContent,
+                  }) => {
+    const {isEditing, setIsEditing} = useChat(message); // Move isEditing state here
     const messageType = message.userFromId === USER_ID ? 'me' : 'other';
-
-    const {
-        handleCloseUpdate,
-        handleUpdate,
-        isEditing,
-        setIsEditing,
-        updatedContent,
-        setUpdatedContent,
-    } = useChat(message)
 
     return (
         <Box key={index} className={messageType}>
@@ -29,10 +26,10 @@ const ChatItem = ({message, index, handleDelete}) => {
             {isEditing ? (
                 <div>
                     <TextField value={updatedContent} onChange={(e) => setUpdatedContent(e.target.value)}/>
-                    <IconButton onClick={handleUpdate}>
+                    <IconButton onClick={() => { handleUpdate(message.id, updatedContent); setIsEditing(false); }}>
                         <SaveIcon/>
                     </IconButton>
-                    <IconButton onClick={handleCloseUpdate}>
+                    <IconButton onClick={() => setIsEditing(false)}>
                         <CloseIcon/>
                     </IconButton>
                 </div>
@@ -44,7 +41,7 @@ const ChatItem = ({message, index, handleDelete}) => {
                     <IconButton onClick={() => setIsEditing(true)}>
                         <EditIcon/>
                     </IconButton>
-                    <IconButton onClick={handleDelete}>
+                    <IconButton onClick={() => handleDelete(message.id)}>
                         <DeleteIcon/>
                     </IconButton>
                 </div>

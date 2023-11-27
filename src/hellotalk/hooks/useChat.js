@@ -20,6 +20,10 @@ const useChat = (message) => {
     };
 
     useEffect(() => {
+        setUpdatedContent(message.content);
+    }, [message.content]);
+
+    useEffect(() => {
         fetchChats();
     }, []);
 
@@ -57,12 +61,10 @@ const useChat = (message) => {
         }
     };
 
-    const handleUpdate = async () => {
-        if (isEditing) {
-            await updateMessage(message.id, updatedContent)
-            setIsEditing(!isEditing);
-            await fetchChats();
-        }
+    const handleUpdate = async (messageId, updatedContent) => {
+        await updateMessage(messageId, updatedContent)
+        setIsEditing(!isEditing);
+        await fetchChats();
     };
 
     const handleCloseUpdate = () => {

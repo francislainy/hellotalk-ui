@@ -1,0 +1,8 @@
+.moment_detail_screen__commentsSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments_header {
+    align-self: center;
+}

@@ -9,6 +9,8 @@ import MomentDetail from "../components/momentDetail/MomentDetail";
 import MomentActions from "../components/momentDetail/MomentActions";
 import useMomentDetail from "../hooks/useMomentDetail";
 
+import './MomentDetailScreen.css';
+
 const MomentDetailScreen = () => {
     const {
         moment,
@@ -48,13 +50,14 @@ const MomentDetailScreen = () => {
                             handleSave={handleSave}
                             handleCommentIconClick={handleCommentIconClick}
                         />
-                        <Box sx={{width: '100%'}}>
+                        <Box className="moment_detail_screen__commentsSection" sx={{width: '100%'}}>
                             <CreateComment
                                 isCommenting={isCommenting}
                                 newComment={newComment}
                                 setNewComment={setNewComment}
                                 handleSaveComment={handleSaveComment}
                             />
+                            <h2 className="comments_header">Comments</h2>
                             <CommentList comments={comments} momentId={id} fetchComments={fetchComments}/>
                         </Box>
                     </Box>

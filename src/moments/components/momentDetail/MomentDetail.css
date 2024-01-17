@@ -1,8 +1,9 @@
 .moment_detail__thumbsup_icon, .moment_detail__comment_icon {
     cursor: pointer;
+    /*color: var(--replyBackground2) !important;*/ /* todo: Check why this does not work, but replyBackground does. 17/01/2024 */
     color: grey !important;
 }
 
 .moment_detail__thumbsup_icon:hover, .moment_detail__comment_icon:hover {
-    color: #000 !important;
+    color: var(--iconHoverColor) !important;
 }

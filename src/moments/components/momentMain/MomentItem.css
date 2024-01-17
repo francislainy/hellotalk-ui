@@ -4,7 +4,7 @@
 }
 
 .moment_item__like_icon:hover, .moment_item__comment_icon:hover {
-    color: #000 !important;
+    color: var(--iconHoverColor) !important;
 }
 
 .moment_item__comment_icon {

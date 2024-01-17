@@ -1,0 +1,12 @@
+.moment_item__like_icon {
+    cursor: pointer;
+    box-shadow: none !important;
+}
+
+.moment_item__like_icon:hover, .moment_item__comment_icon:hover {
+    color: #000 !important;
+}
+
+.moment_item__comment_icon {
+    cursor: pointer;
+}

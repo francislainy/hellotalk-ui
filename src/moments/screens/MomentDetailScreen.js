@@ -57,7 +57,7 @@ const MomentDetailScreen = () => {
                                 setNewComment={setNewComment}
                                 handleSaveComment={handleSaveComment}
                             />
-                            <h2 className="comments_header">Comments</h2>
+                            {comments.size > 0 && <h2 className="comments_header">Comments</h2> }
                             <CommentList comments={comments} momentId={id} fetchComments={fetchComments}/>
                         </Box>
                     </Box>

@@ -1,10 +1,11 @@
 import React from 'react';
-import {Box, Button, Card, TextField, Typography} from '@mui/material';
+import {Box, Button, Card, IconButton, TextField, Typography} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import colors from "../../../colors/colors";
+import './MomentDetail.css';
 
-const MomentDetail = ({ moment, isEditing, updatedContent, setUpdatedContent, handleSave, handleCommentIconClick }) => {
+const MomentDetail = ({moment, isEditing, updatedContent, setUpdatedContent, handleSave, handleCommentIconClick}) => {
     return (
         <Card sx={{backgroundColor: colors.white, width: 1, mt: 2, ml: 0, mr: 0, boxShadow: 'none'}}>
             <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
@@ -27,9 +28,10 @@ const MomentDetail = ({ moment, isEditing, updatedContent, setUpdatedContent, ha
                     <Typography variant="h5">{moment.content}</Typography>
                 )}
                 <Box sx={{display: 'flex', alignItems: 'center', mt: 2}}>
-                    <ThumbUpIcon/>
+                    <ThumbUpIcon className="moment_detail__thumbsup_icon"/>
                     <Typography variant="body2" sx={{ml: 1}}>{moment.likes}</Typography>
-                    <CommentIcon sx={{ml: 2}} onClick={handleCommentIconClick}/>
+                    <CommentIcon className="moment_detail__comment_icon" sx={{ml: 2}}
+                                 onClick={handleCommentIconClick}/>
                     <Typography variant="body2" sx={{ml: 1}}>{moment.comments}</Typography>
                 </Box>
             </Box>

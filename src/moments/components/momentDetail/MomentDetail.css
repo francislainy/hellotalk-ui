@@ -1,0 +1,8 @@
+.moment_detail__thumbsup_icon, .moment_detail__comment_icon {
+    cursor: pointer;
+    color: grey !important;
+}
+
+.moment_detail__thumbsup_icon:hover, .moment_detail__comment_icon:hover {
+    color: #000 !important;
+}

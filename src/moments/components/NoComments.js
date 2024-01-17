@@ -11,7 +11,7 @@ const NoComments = () => {
                 marginTop: 4,
                 fontWeight: 'bold'
             }}>
-                No comments yet.
+                Be the first to comment. :)
             </Typography>
         </>
     );

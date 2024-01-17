@@ -4,6 +4,7 @@ import {Avatar, Box, Typography, IconButton, Card, CardContent} from '@mui/mater
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import avatarImage from '../../../images/avatar.png';
+import './MomentItem.css';
 
 const MomentItem = ({moment, index}) => {
 
@@ -26,10 +27,10 @@ const MomentItem = ({moment, index}) => {
                     </Box>
                     <Typography variant="body1">{moment.content}</Typography>
                     <Box sx={{display: 'flex', marginTop: 1}}>
-                        <IconButton aria-label="like">
+                        <IconButton disableRipple className="moment_item__like_icon">
                             <ThumbUpIcon/>
                         </IconButton>
-                        <IconButton aria-label="comment">
+                        <IconButton disableRipple className="moment_item__comment_icon" >
                             <CommentIcon/>
                         </IconButton>
                     </Box>

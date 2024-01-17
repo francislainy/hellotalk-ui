@@ -32,7 +32,7 @@ const CommentCard = ({comment, momentId, fetchComments}) => {
                             <Typography variant="body2">{comment.content}</Typography>
                         </>
                     )}
-                    {comment.user.id === USER_ID && (
+                    {comment.user.id.toString() === USER_ID && (
                         <>
                             <Button onClick={handleDelete} sx={{color: colors.primary}}>
                                 Delete

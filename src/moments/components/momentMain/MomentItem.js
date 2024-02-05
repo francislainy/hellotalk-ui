@@ -1,17 +1,33 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import {Avatar, Box, Typography, IconButton, Card, CardContent} from '@mui/material';
+import React, {useState} from 'react';
+import {useNavigate} from 'react-router-dom';
+import {Avatar, Box, Card, CardContent, IconButton, Typography} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import avatarImage from '../../../images/avatar.png';
 import './MomentItem.css';
+import {likeMoment, unlikeMoment} from "../../../api/api";
 
 const MomentItem = ({moment, index}) => {
-
     const navigate = useNavigate();
+    const [isLiked, setIsLiked] = useState(moment.numLikes > 0);
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.stopPropagation();
         navigate(`/moment-detail/${index}`);
+    };
+
+    const handleLikeClick = async (e) => {
+        e.stopPropagation();
+        try {
+            if (isLiked) {
+                await unlikeMoment(moment.id);
+            } else {
+                await likeMoment(moment.id);
+            }
+            setIsLiked(!isLiked);
+        } catch (error) {
+            alert(error);
+        }
     };
 
     return (
@@ -27,7 +43,7 @@ const MomentItem = ({moment, index}) => {
                     </Box>
                     <Typography variant="body1">{moment.content}</Typography>
                     <Box sx={{display: 'flex', marginTop: 1}}>
-                        <IconButton disableRipple className="moment_item__like_icon">
+                        <IconButton disableRipple className={isLiked ? "moment_item__like_icon--liked" : "moment_item__like_icon"} onClick={handleLikeClick}>
                             <ThumbUpIcon/>
                         </IconButton>
                         <IconButton disableRipple className="moment_item__comment_icon" >

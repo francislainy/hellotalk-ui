@@ -37,6 +37,13 @@ export const updateMoment = (id, content) => {
     return api.put(`moments/${id}/`, {content});
 };
 
+export const likeMoment = (momentId) => {
+    return api.put(`moments/${momentId}/like/`);
+};
+export const unlikeMoment = (momentId) => {
+    return api.delete(`moments/${momentId}/unlike/`);
+};
+
 export const getCommentsForMoment = (id) => {
     return api.get(`moments/${id}/comments/`);
 };

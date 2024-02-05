@@ -3,6 +3,15 @@
     box-shadow: none !important;
 }
 
+.moment_item__like_icon {
+    color: grey !important;
+}
+
+.moment_item__like_icon--liked {
+    color: #9C27B0 !important;
+}
+
+
 .moment_item__like_icon:hover, .moment_item__comment_icon:hover {
     color: var(--iconHoverColor) !important;
 }

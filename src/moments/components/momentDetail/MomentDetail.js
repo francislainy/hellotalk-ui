@@ -1,5 +1,5 @@
 import React from 'react';
-import {Box, Button, Card, IconButton, TextField, Typography} from '@mui/material';
+import {Box, Button, Card, TextField, Typography} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CommentIcon from '@mui/icons-material/Comment';
 import colors from "../../../colors/colors";

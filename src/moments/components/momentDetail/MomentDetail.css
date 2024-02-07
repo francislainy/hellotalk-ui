@@ -1,9 +1,12 @@
-.moment_detail__thumbsup_icon, .moment_detail__comment_icon {
+.moment_item__like_icon {
     cursor: pointer;
-    /*color: var(--replyBackground2) !important;*/ /* todo: Check why this does not work, but replyBackground does. 17/01/2024 */
+    box-shadow: none !important;
+}
+
+.moment_item__like_icon {
     color: grey !important;
 }
 
-.moment_detail__thumbsup_icon:hover, .moment_detail__comment_icon:hover {
-    color: var(--iconHoverColor) !important;
+.moment_item__like_icon--liked {
+    color: #9C27B0 !important;
 }

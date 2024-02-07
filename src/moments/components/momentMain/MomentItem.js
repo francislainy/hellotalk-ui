@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {useNavigate} from 'react-router-dom';
 import {Avatar, Box, Card, CardContent, IconButton, Typography} from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
@@ -6,15 +6,20 @@ import CommentIcon from '@mui/icons-material/Comment';
 import avatarImage from '../../../images/avatar.png';
 import './MomentItem.css';
 import {likeMoment, unlikeMoment} from "../../../api/api";
+import {USER_ID} from "../../../constants/constants";
 
 const MomentItem = ({moment, index}) => {
     const navigate = useNavigate();
-    const [isLiked, setIsLiked] = useState(moment.numLikes > 0);
+    const [isLiked, setIsLiked] = useState( false);
 
     const handleClick = (e) => {
         e.stopPropagation();
         navigate(`/moment-detail/${index}`);
     };
+
+    useEffect(() => {
+        setIsLiked(moment && moment.likedByIds ? moment.likedByIds.includes(USER_ID) : false);
+    }, [moment]);
 
     const handleLikeClick = async (e) => {
         e.stopPropagation();

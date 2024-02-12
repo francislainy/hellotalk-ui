@@ -7,7 +7,7 @@ const useChat = (message) => {
     const [newMessage, setNewMessage] = useState('');
     const [chats, setChats] = useState([])
 
-    const [isEditing, setIsEditing] = useState(false);
+    const [editingMessageId, setEditingMessageId] = useState(null);
     const [updatedContent, setUpdatedContent] = useState(message.content);
     const [isAnyItemEditing, setIsAnyItemEditing] = useState(false);
 
@@ -64,20 +64,18 @@ const useChat = (message) => {
 
     const handleUpdate = async (messageId, updatedContent) => {
         await updateMessage(messageId, updatedContent)
-        setIsEditing(!isEditing);
+        setEditingMessageId(null);
         await fetchChats();
     };
 
     const handleCloseUpdate = () => {
-        setIsEditing(!isEditing);
+        setEditingMessageId(null);
     };
 
     return {
         selectedChat,
         newMessage,
         chats,
-        isEditing,
-        setIsEditing,
         isAnyItemEditing,
         setIsAnyItemEditing,
         updatedContent,
@@ -88,6 +86,8 @@ const useChat = (message) => {
         handleDelete,
         handleCloseUpdate,
         handleUpdate,
+        editingMessageId,
+        setEditingMessageId,
     }
 }
 

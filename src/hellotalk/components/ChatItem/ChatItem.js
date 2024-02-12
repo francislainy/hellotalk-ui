@@ -18,9 +18,11 @@ const ChatItem = ({
                       updatedContent,
                       setUpdatedContent,
                       isAnyItemEditing,
-                      setIsAnyItemEditing
+                      setIsAnyItemEditing,
+                      editingMessageId,
+                      setEditingMessageId,
                   }) => {
-    const {isEditing, setIsEditing} = useChat(message);
+    // const {isEditing, setIsEditing} = useChat(message);
     const messageType = message.userFromId === USER_ID ? 'me' : 'other';
 
     const navigate = useNavigate();
@@ -32,18 +34,18 @@ const ChatItem = ({
     return (
         <Box key={index} className={messageType}>
             <Avatar src={avatarImage} className="avatar" sx={{width: 32, height: 32}} onClick={handleOnClickAvatar}/>
-            {isEditing ? (
+            {editingMessageId === message.id ? (
                 <div>
                     <TextField value={updatedContent} onChange={(e) => setUpdatedContent(e.target.value)}/>
                     <IconButton onClick={() => {
                         handleUpdate(message.id, updatedContent);
-                        setIsEditing(false);
+                        setEditingMessageId(null);
                         setIsAnyItemEditing(false);
                     }}>
                         <SaveIcon/>
                     </IconButton>
                     <IconButton onClick={() => {
-                        setIsEditing(false);
+                        setEditingMessageId(null);
                         setIsAnyItemEditing(false);
                     }}>
                         <CloseIcon/>
@@ -52,10 +54,10 @@ const ChatItem = ({
             ) : (
                 <Typography className="text">{message.content}</Typography>
             )}
-            {messageType === 'me' && !isEditing && !isAnyItemEditing && (
+            {messageType === 'me' && editingMessageId !== message.id && !isAnyItemEditing && (
                 <div>
                     <IconButton onClick={() => {
-                        setIsEditing(true);
+                        setEditingMessageId(message.id);
                         setIsAnyItemEditing(true);
                     }}>
                         <EditIcon/>

@@ -11,7 +11,7 @@ const ChatDetails = ({
                      }) => {
     const otherParticipant = chat !== undefined && chat.participants.find(participant => participant.id !== USER_ID);
 
-    const {isAnyItemEditing, setIsAnyItemEditing} = useChat('');
+    const {editingMessageId, setEditingMessageId, isAnyItemEditing, setIsAnyItemEditing} = useChat('');
 
     return (
         <div>
@@ -24,6 +24,8 @@ const ChatDetails = ({
                             handleDelete={() => handleDelete(message.id)}
                             index={index}
                             key={index}
+                            editingMessageId={editingMessageId}
+                            setEditingMessageId={setEditingMessageId}
                             isAnyItemEditing={isAnyItemEditing}
                             setIsAnyItemEditing={setIsAnyItemEditing}
                             handleUpdate={handleUpdate}

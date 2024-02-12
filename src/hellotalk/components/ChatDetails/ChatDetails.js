@@ -1,7 +1,6 @@
 import React, {useContext} from 'react';
 import ChatItem from '../ChatItem/ChatItem';
 import {USER_ID} from "../../../constants/constants";
-import useChat from "../../hooks/useChat";
 import ChatContext from '../../contexts/ChatContext';
 
 const ChatDetails = () => {

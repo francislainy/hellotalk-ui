@@ -10,6 +10,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SaveIcon from '@mui/icons-material/Save';
 import CloseIcon from '@mui/icons-material/Close';
 import useChat from "../../hooks/useChat";
+import {useNavigate} from "react-router-dom";
 
 const ChatItem = ({
                       message, index, handleDelete,
@@ -22,9 +23,15 @@ const ChatItem = ({
     const {isEditing, setIsEditing} = useChat(message);
     const messageType = message.userFromId === USER_ID ? 'me' : 'other';
 
+    const navigate = useNavigate();
+
+    const handleOnClickAvatar = () => {
+        navigate(`/users/${message.userFromId}`);
+    }
+
     return (
         <Box key={index} className={messageType}>
-            <Avatar src={avatarImage} className="avatar" sx={{width: 32, height: 32}}/>
+            <Avatar src={avatarImage} className="avatar" sx={{width: 32, height: 32}} onClick={handleOnClickAvatar}/>
             {isEditing ? (
                 <div>
                     <TextField value={updatedContent} onChange={(e) => setUpdatedContent(e.target.value)}/>

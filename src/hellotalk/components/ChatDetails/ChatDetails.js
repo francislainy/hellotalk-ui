@@ -1,21 +1,29 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import ChatItem from '../ChatItem/ChatItem';
 import {USER_ID} from "../../../constants/constants";
 import useChat from "../../hooks/useChat";
+import ChatContext from '../../contexts/ChatContext';
 
-const ChatDetails = ({
-                         chat, handleDelete,
-                         handleUpdate,
-                         updatedContent,
-                         setUpdatedContent,
-                     }) => {
-    const otherParticipant = chat !== undefined && chat.participants.find(participant => participant.id !== USER_ID);
+const ChatDetails = () => {
+    const {
+        chat,
+        handleDelete,
+        handleUpdate,
+        updatedContent,
+        setUpdatedContent,
+    } = useContext(ChatContext);
 
     const {editingMessageId, setEditingMessageId, isAnyItemEditing, setIsAnyItemEditing} = useChat('');
 
+    if (!chat) {
+        return <div>No chat selected</div>;
+    }
+
+    const otherParticipant = chat.participants.find(participant => participant.id !== USER_ID);
+
     return (
         <div>
-            {(chat !== undefined && chat.messages.length > 0) && (
+            {(chat.messages.length > 0) && (
                 <div>
                     <h2>{chat.messages[0] ? otherParticipant.name : "No messages in chat"}</h2>
                     {chat.messages.map((message, index) => (

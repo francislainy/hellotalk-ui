@@ -3,6 +3,7 @@ import ChatDetails from "../ChatDetails/ChatDetails";
 import AddMessage from "../AddMessage/AddMessage";
 import ChatList from "../ChatList/ChatList";
 import useChat from "../../hooks/useChat";
+import ChatContext from "../../contexts/ChatContext";
 
 const ChatInterface = () => {
     const {
@@ -19,7 +20,23 @@ const ChatInterface = () => {
         setUpdatedContent,
     } = useChat('');
 
+    const chat = chats[selectedChat];
+
     return (
+        <ChatContext.Provider value={{
+            chat, // Pass the chat object to the ChatContext.Provider
+            selectedChat,
+            newMessage,
+            chats,
+            handleChatItemClick,
+            handleNewMessageChange,
+            handleCreateMessage,
+            handleDelete,
+            handleCloseUpdate,
+            handleUpdate,
+            updatedContent,
+            setUpdatedContent,
+        }}>
         <div style={{display: 'flex'}}>
             <ChatList
                 chats={chats}
@@ -27,14 +44,7 @@ const ChatInterface = () => {
                 handleChatItemClick={handleChatItemClick}
             />
             <div style={{flex: 2, marginLeft: '60px'}}>
-                <ChatDetails
-                    chat={chats[selectedChat]}
-                    handleDelete={handleDelete}
-                    handleCloseUpdate={handleCloseUpdate}
-                    handleUpdate={handleUpdate}
-                    updatedContent={updatedContent}
-                    setUpdatedContent={setUpdatedContent}
-                />
+                <ChatDetails/>
                 <AddMessage
                     handleCreateMessage={handleCreateMessage}
                     handleNewMessageChange={handleNewMessageChange}
@@ -42,6 +52,7 @@ const ChatInterface = () => {
                 />
             </div>
         </div>
+        </ChatContext.Provider>
     );
 }
 

@@ -9,7 +9,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import SaveIcon from '@mui/icons-material/Save';
 import CloseIcon from '@mui/icons-material/Close';
-import useChat from "../../hooks/useChat";
 import {useNavigate} from "react-router-dom";
 
 const ChatItem = ({
@@ -22,7 +21,6 @@ const ChatItem = ({
                       editingMessageId,
                       setEditingMessageId,
                   }) => {
-    // const {isEditing, setIsEditing} = useChat(message);
     const messageType = message.userFromId === USER_ID ? 'me' : 'other';
 
     const navigate = useNavigate();

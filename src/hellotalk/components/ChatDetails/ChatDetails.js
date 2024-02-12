@@ -7,13 +7,7 @@ import ChatContext from '../../contexts/ChatContext';
 const ChatDetails = () => {
     const {
         chat,
-        handleDelete,
-        handleUpdate,
-        updatedContent,
-        setUpdatedContent,
     } = useContext(ChatContext);
-
-    const {editingMessageId, setEditingMessageId, isAnyItemEditing, setIsAnyItemEditing} = useChat('');
 
     if (!chat) {
         return <div>No chat selected</div>;
@@ -27,19 +21,7 @@ const ChatDetails = () => {
                 <div>
                     <h2>{chat.messages[0] ? otherParticipant.name : "No messages in chat"}</h2>
                     {chat.messages.map((message, index) => (
-                        <ChatItem
-                            message={message}
-                            handleDelete={() => handleDelete(message.id)}
-                            index={index}
-                            key={index}
-                            editingMessageId={editingMessageId}
-                            setEditingMessageId={setEditingMessageId}
-                            isAnyItemEditing={isAnyItemEditing}
-                            setIsAnyItemEditing={setIsAnyItemEditing}
-                            handleUpdate={handleUpdate}
-                            updatedContent={updatedContent}
-                            setUpdatedContent={setUpdatedContent}
-                        />
+                        <ChatItem message={message} index={index}/>
                     ))}
                 </div>
             )}

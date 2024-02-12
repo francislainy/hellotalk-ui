@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import avatarImage from '../../../images/avatar.png'
 import {Avatar, Box, IconButton, TextField, Typography} from "@mui/material";
@@ -10,17 +10,20 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import SaveIcon from '@mui/icons-material/Save';
 import CloseIcon from '@mui/icons-material/Close';
 import {useNavigate} from "react-router-dom";
+import ChatContext from "../../contexts/ChatContext";
 
-const ChatItem = ({
-                      message, index, handleDelete,
-                      handleUpdate,
-                      updatedContent,
-                      setUpdatedContent,
-                      isAnyItemEditing,
-                      setIsAnyItemEditing,
-                      editingMessageId,
-                      setEditingMessageId,
-                  }) => {
+const ChatItem = ({message, index}) => {
+    const {
+        handleDelete,
+        handleUpdate,
+        updatedContent,
+        setUpdatedContent,
+        isAnyItemEditing,
+        setIsAnyItemEditing,
+        editingMessageId,
+        setEditingMessageId,
+    } = useContext(ChatContext);
+
     const messageType = message.userFromId === USER_ID ? 'me' : 'other';
 
     const navigate = useNavigate();

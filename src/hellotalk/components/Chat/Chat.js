@@ -18,6 +18,10 @@ const ChatInterface = () => {
         handleUpdate,
         updatedContent,
         setUpdatedContent,
+        editingMessageId,
+        setEditingMessageId,
+        isAnyItemEditing,
+        setIsAnyItemEditing,
     } = useChat('');
 
     const chat = chats[selectedChat];
@@ -36,6 +40,10 @@ const ChatInterface = () => {
             handleUpdate,
             updatedContent,
             setUpdatedContent,
+            editingMessageId,
+            setEditingMessageId,
+            isAnyItemEditing,
+            setIsAnyItemEditing,
         }}>
         <div style={{display: 'flex'}}>
             <ChatList

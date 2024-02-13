@@ -2,7 +2,7 @@ import React, {useContext} from 'react';
 
 import avatarImage from '../../../images/avatar.png'
 import {Avatar, Box, IconButton, TextField, Typography} from "@mui/material";
-import './ChatItem.css';
+import './MessageItem.css';
 import {USER_ID} from "../../../constants/constants";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -12,7 +12,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import {useNavigate} from "react-router-dom";
 import ChatContext from "../../contexts/ChatContext";
 
-const ChatItem = ({message, index}) => {
+const MessageItem = ({message, index}) => {
     const {
         handleDelete,
         handleUpdate,
@@ -72,4 +72,4 @@ const ChatItem = ({message, index}) => {
     );
 };
 
-export default ChatItem;
+export default MessageItem;

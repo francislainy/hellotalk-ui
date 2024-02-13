@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import ChatItem from '../ChatItem/ChatItem';
+import MessageItem from '../MessageItem/MessageItem';
 import {USER_ID} from "../../../constants/constants";
 import ChatContext from '../../contexts/ChatContext';
 
@@ -20,7 +20,7 @@ const ChatDetails = () => {
                 <div>
                     <h2>{chat.messages[0] ? otherParticipant.name : "No messages in chat"}</h2>
                     {chat.messages.map((message, index) => (
-                        <ChatItem message={message} index={index}/>
+                        <MessageItem message={message} index={index}/>
                     ))}
                 </div>
             )}

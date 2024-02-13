@@ -6,7 +6,7 @@
     --replyBackground: #d1c4e9;
   }
 
-/* ChatItem.css */
+/* MessageItem.css */
 .me, .other {
     display: flex;
     align-items: flex-start;

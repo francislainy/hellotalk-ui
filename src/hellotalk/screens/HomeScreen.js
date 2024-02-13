@@ -1,12 +1,11 @@
 import React from 'react';
-import ChatInterface from "../components/Chat/Chat";
+import ChatScreen from "../components/ChatScreen/ChatScreen";
 import {TextField, InputAdornment} from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
-const Home = () => {
+const HomeScreen = () => {
     return (
-        <div style={{marginLeft: '20px', marginRight: '20px',}}>
-            <h1>Home</h1>
+        <div style={{margin: '20px',}}>
             <TextField
                 variant="outlined"
                 fullWidth
@@ -20,9 +19,9 @@ const Home = () => {
                     sx: {borderRadius: '20px'},
                 }}
             />
-            <ChatInterface/>
+            <ChatScreen/>
         </div>
     );
 }
 
-export default Home;
+export default HomeScreen;

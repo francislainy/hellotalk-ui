@@ -3,9 +3,9 @@ import ChatDetails from "../ChatDetails/ChatDetails";
 import AddMessage from "../AddMessage/AddMessage";
 import ChatList from "../ChatList/ChatList";
 import ChatProvider from "../../provider/ChatProvider";
-import './Chat.css';
+import './ChatScreen.css';
 
-const Chat = () => {
+const ChatScreen = () => {
     return (
         <ChatProvider>
             <div className="chat">
@@ -19,5 +19,5 @@ const Chat = () => {
     );
 }
 
-export default Chat;
+export default ChatScreen;
 

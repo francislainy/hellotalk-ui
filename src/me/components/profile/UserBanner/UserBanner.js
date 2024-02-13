@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
-import avatarImage from '../../../images/avatar.png'
+import avatarImage from '../../../../images/avatar.png'
 
 const UserProfileBanner = ({ user }) => {
     return (

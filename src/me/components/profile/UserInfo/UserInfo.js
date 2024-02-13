@@ -1,5 +1,5 @@
 import React from 'react'
-import UserChipList from "./UserChipList";
+import UserChipList from "../UserChipList/UserChipList";
 
 const UserInfo = ({sectionHeader, list}) => {
     return <>

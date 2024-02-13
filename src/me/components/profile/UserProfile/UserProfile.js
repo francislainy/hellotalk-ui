@@ -1,6 +1,6 @@
 import React from 'react';
-import SelfIntroduction from "./SelfIntroduction";
-import UserInfo from "./UserInfo";
+import SelfIntroduction from "../SelfIntroduction/SelfIntroduction";
+import UserInfo from "../UserInfo/UserInfo";
 
 const UserProfile = ({userInfo}) => {
     return (

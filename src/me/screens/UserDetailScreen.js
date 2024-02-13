@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import UserBanner from "../components/profile/UserBanner";
-import UserFilterTabs from "../components/profile/UserFilterTabs";
-import UserProfile from "../components/profile/UserProfile";
+import UserBanner from "../components/profile/UserBanner/UserBanner";
+import UserFilterTabs from "../components/profile/UserFilterTabs/UserFilterTabs";
+import UserProfile from "../components/profile/UserProfile/UserProfile";
 import Moments from "../../moments/components/Moments";
 import {useNavigate, useParams} from "react-router-dom";
 import {createMessage} from "../../api/api";

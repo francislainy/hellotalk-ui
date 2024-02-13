@@ -1,7 +1,7 @@
 import React from 'react';
-import UserItem from './UserItem/UserItem';
-import {USER_ID} from "../../../constants/constants";
-import {useUserList} from "../../hooks/useUserList";
+import UserItem from '../UserItem/UserItem';
+import {USER_ID} from "../../../../constants/constants";
+import {useUserList} from "../../../hooks/useUserList";
 
 const UserList = () => {
     const {users, followships, getFollowships, handleCreateFollowship, handleDeleteFollowship} = useUserList();

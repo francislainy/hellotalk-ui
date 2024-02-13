@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import {Button} from "@mui/material";
-import colors from "../../../colors/colors";
-import {USER_ID} from "../../../constants/constants";
+import colors from "../../../../colors/colors";
+import {USER_ID} from "../../../../constants/constants";
 
 const UserFilterTabs = ({loadComponent, userInfo}) => {
     const [selectedTab, setSelectedTab] = useState('profile');

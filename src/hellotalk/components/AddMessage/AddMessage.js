@@ -1,7 +1,7 @@
 import {Button, TextField} from "@mui/material";
-import colors from "../../../colors/colors";
 import React, {useContext} from "react";
 import ChatContext from "../../contexts/ChatContext";
+import './AddMessage.css';
 
 const AddMessage = () => {
     const {
@@ -10,28 +10,24 @@ const AddMessage = () => {
         newMessage,
     } = useContext(ChatContext);
 
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        handleCreateMessage();
+    };
+
     return (
-        <form onSubmit={(event) => {
-            event.preventDefault();
-            handleCreateMessage();
-        }} sx={{marginTop: 2}}>
+        <form onSubmit={handleSubmit} className="add-message-form">
             <TextField
                 value={newMessage}
                 onChange={handleNewMessageChange}
                 label="New Message"
                 variant="outlined"
-                sx={{width: '75%', marginBottom: 2}}
+                className="new-message-field"
             />
             <Button
                 type="submit"
                 variant="contained"
-                sx={{
-                    marginLeft: 1,
-                    backgroundColor: colors.primary,
-                    '&:hover': {
-                        backgroundColor: colors.darkPurple, // darker shade for hover effect
-                    }
-                }}
+                className="send-button"
             >
                 Send
             </Button>

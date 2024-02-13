@@ -1,0 +1,18 @@
+/* AddMessage.css */
+.add-message-form {
+    margin-top: 2rem !important;
+}
+
+.new-message-field {
+    width: 75% !important;
+    margin-bottom: 2rem !important;
+}
+
+.send-button {
+    margin-left: 1rem !important;
+    background-color: #7B1FA2 !important;
+}
+
+.send-button:hover {
+    background-color: #5a0f73 !important;
+}

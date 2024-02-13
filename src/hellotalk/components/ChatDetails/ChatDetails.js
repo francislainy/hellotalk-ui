@@ -25,14 +25,18 @@ const getOtherParticipant = (chat) => {
 }
 
 const getChatMessages = (chat, otherParticipant) => {
-    return chat.messages.length > 0 && (
+    if (!chat.messages || chat.messages.length === 0) {
+        return <h2>No messages in chat</h2>;
+    }
+
+    return (
         <div>
-            <h2>{chat.messages[0] ? otherParticipant.name : "No messages in chat"}</h2>
+            <h2>{otherParticipant.name}</h2>
             {chat.messages.map((message, index) => (
-                <MessageItem message={message} index={index}/>
+                <MessageItem key={index} message={message} />
             ))}
         </div>
     );
-}
+};
 
 export default ChatDetails;

@@ -45,17 +45,13 @@ const ChatInterface = () => {
             isAnyItemEditing,
             setIsAnyItemEditing,
         }}>
-        <div style={{display: 'flex'}}>
-            <ChatList
-                chats={chats}
-                selectedChat={selectedChat}
-                handleChatItemClick={handleChatItemClick}
-            />
-            <div style={{flex: 2, marginLeft: '60px'}}>
-                <ChatDetails/>
-                <AddMessage/>
+            <div style={{display: 'flex'}}>
+                <ChatList/>
+                <div style={{flex: 2, marginLeft: '60px'}}>
+                    <ChatDetails/>
+                    <AddMessage/>
+                </div>
             </div>
-        </div>
         </ChatContext.Provider>
     );
 }

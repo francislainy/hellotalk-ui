@@ -1,9 +1,14 @@
 import {Avatar, List, ListItem, ListItemAvatar, ListItemText} from "@mui/material";
 import {USER_ID} from "../../../constants/constants";
 import avatarImage from "../../../images/avatar.png";
-import React from "react";
+import React, {useContext} from "react";
+import ChatContext from "../../contexts/ChatContext";
 
-const ChatList = ({chats, selectedChat, handleChatItemClick}) => {
+const ChatList = () => {
+    const {
+        chats, selectedChat, handleChatItemClick
+    } = useContext(ChatContext)
+
     return (
         <List>
             {chats.map((chat, index) => {

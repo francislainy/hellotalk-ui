@@ -5,7 +5,7 @@ import ChatItem from "../ChatItem/ChatItem";
 
 const ChatList = () => {
     const {
-        chats, selectedChat, handleChatItemClick
+        chats
     } = useContext(ChatContext);
 
     return (
@@ -13,10 +13,7 @@ const ChatList = () => {
             {chats.map((chat, index) => (
                 <ChatItem
                     key={index}
-                    chat={chat}
                     index={index}
-                    selectedChat={selectedChat}
-                    handleChatItemClick={handleChatItemClick}
                 />
             ))}
         </List>

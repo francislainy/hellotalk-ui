@@ -1,9 +1,19 @@
 import {USER_ID} from "../../../constants/constants";
 import {Avatar, ListItem, ListItemAvatar, ListItemText} from "@mui/material";
 import avatarImage from "../../../images/avatar.png";
-import React from "react";
+import React, {useContext} from "react";
+import ChatContext from "../../contexts/ChatContext";
 
-const ChatItem = ({ chat, index, selectedChat, handleChatItemClick }) => {
+const ChatItem = ({index}) => {
+
+    const {
+        chats,
+        selectedChat,
+        handleChatItemClick,
+    } = useContext(ChatContext);
+
+    const chat = chats[index];
+
     // Find the participant who is not the current user
     const otherParticipant = chat.participants.find(participant => participant.id !== USER_ID);
 
@@ -19,7 +29,7 @@ const ChatItem = ({ chat, index, selectedChat, handleChatItemClick }) => {
             </ListItemAvatar>
             <ListItemText
                 primary={otherParticipant ? otherParticipant.name : 'Default Value'}
-                secondary={chat.messages[chat.messages.length-1].content} // Most recent message
+                secondary={chat.messages[chat.messages.length - 1].content} // Most recent message
                 sx={{fontSize: '2.5em'}} // increase the font size
             />
         </ListItem>

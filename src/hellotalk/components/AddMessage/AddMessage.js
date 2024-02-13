@@ -1,9 +1,20 @@
 import {Button, TextField} from "@mui/material";
 import colors from "../../../colors/colors";
-import React from "react";
+import React, {useContext} from "react";
+import ChatContext from "../../contexts/ChatContext";
 
-const AddMessage = ({handleCreateMessage, handleNewMessageChange, newMessage}) => {
-    return (<form onSubmit={(event) => {event.preventDefault(); handleCreateMessage();}} sx={{marginTop: 2}}>
+const AddMessage = () => {
+    const {
+        handleCreateMessage,
+        handleNewMessageChange,
+        newMessage,
+    } = useContext(ChatContext);
+
+    return (
+        <form onSubmit={(event) => {
+            event.preventDefault();
+            handleCreateMessage();
+        }} sx={{marginTop: 2}}>
             <TextField
                 value={newMessage}
                 onChange={handleNewMessageChange}

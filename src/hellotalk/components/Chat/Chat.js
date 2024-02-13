@@ -53,11 +53,7 @@ const ChatInterface = () => {
             />
             <div style={{flex: 2, marginLeft: '60px'}}>
                 <ChatDetails/>
-                <AddMessage
-                    handleCreateMessage={handleCreateMessage}
-                    handleNewMessageChange={handleNewMessageChange}
-                    newMessage={newMessage}
-                />
+                <AddMessage/>
             </div>
         </div>
         </ChatContext.Provider>

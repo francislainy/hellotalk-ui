@@ -2,7 +2,7 @@ import React from "react";
 import {Chip} from "@mui/material";
 import colors from "../../../../colors/colors";
 
-const UserChipList = ({list}) => {
+const UserChipList = ({list = [] }) => {
 
     return <div className="tag-container">
         {list.map((item, index) => (

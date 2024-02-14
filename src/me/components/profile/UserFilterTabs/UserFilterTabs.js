@@ -35,7 +35,7 @@ const UserFilterTabs = ({ setComponentName, sayHi }) => {
         <div style={{display: 'flex', justifyContent: 'space-between', marginTop: "50px"}}>
             {renderButton('profile', 'Profile')}
             {renderButton('moments', 'Moments')}
-            {user.id !== USER_ID && renderButton('sayHi', 'Say Hi', sayHi)}
+            {user?.id !== USER_ID && renderButton('sayHi', 'Say Hi', sayHi)}
         </div>
     );
 }

@@ -4,45 +4,12 @@ import useChat from "../hooks/useChat";
 import ChatContext from "../contexts/ChatContext";
 
 const ChatProvider = ({ children }) => {
-    const {
-        selectedChat,
-        newMessage,
-        chats,
-        handleChatItemClick,
-        handleNewMessageChange,
-        handleCreateMessage,
-        handleDelete,
-        handleCloseUpdate,
-        handleUpdate,
-        updatedContent,
-        setUpdatedContent,
-        editingMessageId,
-        setEditingMessageId,
-        isAnyItemEditing,
-        setIsAnyItemEditing,
-    } = useChat('');
+    const chatState = useChat('');
 
-    const chat = chats[selectedChat];
+    const chat = chatState.chats[chatState.selectedChat];
 
     return (
-        <ChatContext.Provider value={{
-            chat,
-            selectedChat,
-            newMessage,
-            chats,
-            handleChatItemClick,
-            handleNewMessageChange,
-            handleCreateMessage,
-            handleDelete,
-            handleCloseUpdate,
-            handleUpdate,
-            updatedContent,
-            setUpdatedContent,
-            editingMessageId,
-            setEditingMessageId,
-            isAnyItemEditing,
-            setIsAnyItemEditing,
-        }}>
+        <ChatContext.Provider value={{...chatState, chat}}>
             {children}
         </ChatContext.Provider>
     );

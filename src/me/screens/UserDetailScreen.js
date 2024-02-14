@@ -39,7 +39,7 @@ const UserDetailScreen = () => {
             {user && (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <UserBanner user={user} />
-                    <UserFilterTabs setComponentName={setComponentName} sayHi={sayHi} user={user} />
+                    <UserFilterTabs setComponentName={setComponentName} sayHi={sayHi}/>
                     {Component && <Component user={user} />}
                 </div>
             )}

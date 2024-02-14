@@ -49,7 +49,7 @@ const UserProfileLatestMessage = ({ user }) => {
     );
 };
 
-const UserProfileAnotherLineOfText = ({ user }) => {
+const UserProfileAnotherLineOfText = () => {
     return (
         <Typography variant="body2" color="text.secondary" sx={{ lineHeight: 1.2, color: '#000000DB', fontWeight: 'bold', textAlign: 'center' }}>
             Another line of text

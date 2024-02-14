@@ -73,13 +73,6 @@ const useChat = (message) => {
     };
 
     return {
-        selectedChat,
-        newMessage,
-        chats,
-        isAnyItemEditing,
-        setIsAnyItemEditing,
-        updatedContent,
-        setUpdatedContent,
         handleChatItemClick,
         handleNewMessageChange,
         handleCreateMessage,
@@ -88,6 +81,13 @@ const useChat = (message) => {
         handleUpdate,
         editingMessageId,
         setEditingMessageId,
+        selectedChat,
+        newMessage,
+        chats,
+        isAnyItemEditing,
+        setIsAnyItemEditing,
+        updatedContent,
+        setUpdatedContent,
     }
 }
 

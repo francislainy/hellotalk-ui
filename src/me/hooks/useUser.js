@@ -11,7 +11,7 @@ const COMPONENTS = {
 };
 
 export const useUser = (id = USER_ID) => {
-    const [userInfo, setUserInfo] = useState({
+    const [user, setUser] = useState({
         id: '',
         name: '',
         avatar: '',
@@ -31,7 +31,7 @@ export const useUser = (id = USER_ID) => {
             const response = await getUser(id);
             const data = response.data;
 
-            setUserInfo({
+            setUser({
                 id: data.id,
                 selfIntroduction: data.selfIntroduction,
                 hobbyAndInterests: data.hobbyAndInterests,
@@ -56,5 +56,5 @@ export const useUser = (id = USER_ID) => {
 
     const Component = COMPONENTS[componentName];
 
-    return {userInfo, isLoading, fetchUser, componentName, setComponentName, Component};
+    return {user, isLoading, fetchUser, componentName, setComponentName, Component};
 }

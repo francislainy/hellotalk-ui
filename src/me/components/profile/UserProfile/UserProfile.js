@@ -2,14 +2,14 @@ import React from 'react';
 import SelfIntroduction from "../SelfIntroduction/SelfIntroduction";
 import UserInfo from "../UserInfo/UserInfo";
 
-const UserProfile = ({userInfo}) => {
+const UserProfile = ({user}) => {
     return (
         <>
-            <SelfIntroduction selfIntroduction={userInfo.selfIntroduction}/>
-            <UserInfo sectionHeader={'My Hometown'} list={userInfo.hometown}/>
-            <UserInfo sectionHeader={'My Occupation'} list={userInfo.occupation}/>
-            <UserInfo sectionHeader={'Interest & Hobbies'} list={userInfo.hobbyAndInterests}/>
-            <UserInfo sectionHeader={'Places I want to go'} list={userInfo.placesToVisit}/>
+            <SelfIntroduction selfIntroduction={user.selfIntroduction}/>
+            <UserInfo sectionHeader={'My Hometown'} list={user.hometown}/>
+            <UserInfo sectionHeader={'My Occupation'} list={user.occupation}/>
+            <UserInfo sectionHeader={'Interest & Hobbies'} list={user.hobbyAndInterests}/>
+            <UserInfo sectionHeader={'Places I want to go'} list={user.placesToVisit}/>
         </>
     );
 }

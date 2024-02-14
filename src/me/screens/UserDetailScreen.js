@@ -15,12 +15,12 @@ const COMPONENTS = {
 const UserDetailScreen = () => {
     const { id } = useParams();
     const navigate = useNavigate();
-    const { userInfo, isLoading, fetchUser } = useUser(id);
+    const { user, isLoading, fetchUser } = useUser(id);
     const [componentName, setComponentName] = useState('profile');
 
     const message = {
         content: 'Hi',
-        userToId: userInfo.id
+        userToId: user.id
     }
 
     const sayHi = () => {
@@ -36,11 +36,11 @@ const UserDetailScreen = () => {
 
     return (
         <>
-            {userInfo && (
+            {user && (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    <UserBanner user={userInfo} />
-                    <UserFilterTabs setComponentName={setComponentName} sayHi={sayHi} userInfo={userInfo} />
-                    {Component && <Component userInfo={userInfo} />}
+                    <UserBanner user={user} />
+                    <UserFilterTabs setComponentName={setComponentName} sayHi={sayHi} user={user} />
+                    {Component && <Component user={user} />}
                 </div>
             )}
         </>

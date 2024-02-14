@@ -3,7 +3,7 @@ import {Button} from "@mui/material";
 import colors from "../../../../colors/colors";
 import {USER_ID} from "../../../../constants/constants";
 
-const UserFilterTabs = ({ setComponentName, sayHi, userInfo }) => {
+const UserFilterTabs = ({ setComponentName, sayHi, user }) => {
     const [selectedTab, setSelectedTab] = useState('profile');
 
     const handleButtonClick = (tabName) => {
@@ -31,7 +31,7 @@ const UserFilterTabs = ({ setComponentName, sayHi, userInfo }) => {
         <div style={{display: 'flex', justifyContent: 'space-between', marginTop: "50px"}}>
             {renderButton('profile', 'Profile')}
             {renderButton('moments', 'Moments')}
-            {userInfo.id !== USER_ID && renderButton('sayHi', 'Say Hi', sayHi)}
+            {user.id !== USER_ID && renderButton('sayHi', 'Say Hi', sayHi)}
         </div>
     );
 }

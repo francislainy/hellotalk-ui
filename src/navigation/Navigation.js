@@ -4,7 +4,7 @@ import MomentDetailScreen from '../moments/screens/MomentDetailScreen';
 import HomeScreen from '../hellotalk/screens/HomeScreen';
 import ConnectScreen from '../connect/screens/ConnectScreen';
 import LiveScreen from '../live/screens/LiveScreen';
-import Me from '../me/components/profile/Me/Me';
+import MeScreen from '../me/screens/MeScreen';
 import MomentsScreen from '../moments/screens/MomentsScreen';
 import CustomAppBar from "../AppBar";
 import AddMoment from "../moments/components/momentMain/AddMoment";
@@ -18,7 +18,7 @@ const Navigation = () => {
                 <Route path="/moments" element={<MomentsScreen/>}/>
                 <Route path="/connect" element={<ConnectScreen/>}/>
                 <Route path="/live" element={<LiveScreen/>}/>
-                <Route path="/me" element={<Me/>}/>
+                <Route path="/me" element={<MeScreen/>}/>
                 <Route path="/" element={<HomeScreen/>}/>
                 <Route path="/moment-detail/:id" element={<MomentDetailScreen />} />
                 <Route path="/moments/add" element={<AddMoment />} />

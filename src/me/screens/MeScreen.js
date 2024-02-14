@@ -12,7 +12,7 @@ const MeScreen = () => {
             {user && (
                 <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
                     <UserBanner/>
-                    <UserFilterTabs setComponentName={setComponentName} user={user}/>
+                    <UserFilterTabs setComponentName={setComponentName}/>
                     {Component && <Component user={user}/>}
                 </div>
             )}

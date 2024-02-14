@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import {Button} from "@mui/material";
 import colors from "../../../../colors/colors";
 import {USER_ID} from "../../../../constants/constants";
+import UserContext from "../../../contexts/UserContext";
 
-const UserFilterTabs = ({ setComponentName, sayHi, user }) => {
+const UserFilterTabs = ({ setComponentName, sayHi }) => {
+
+    const {user} = useContext(UserContext)
+
     const [selectedTab, setSelectedTab] = useState('profile');
 
     const handleButtonClick = (tabName) => {

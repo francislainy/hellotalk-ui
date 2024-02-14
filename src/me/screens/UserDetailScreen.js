@@ -7,48 +7,44 @@ import {useNavigate, useParams} from "react-router-dom";
 import {createMessage} from "../../api/api";
 import {useUser} from "../hooks/useUser";
 
+const COMPONENTS = {
+    profile: UserProfile,
+    moments: Moments,
+};
+
 const UserDetailScreen = () => {
     const { id } = useParams();
-    const navigate = useNavigate()
-    const {userInfo, isLoading, fetchUser} = useUser(id);
-    const [component, setComponent] = useState(null);
+    const navigate = useNavigate();
+    const { userInfo, isLoading, fetchUser } = useUser(id);
+    const [componentName, setComponentName] = useState('profile');
 
     const message = {
         content: 'Hi',
         userToId: userInfo.id
     }
 
-    const loadComponent = (componentName) => {
-        switch (componentName) {
-            case 'profile':
-                setComponent(<UserProfile userInfo={userInfo}/>);
-                break;
-            case 'moments':
-                setComponent(<Moments/>);
-                break;
-            case 'sayHi':
-                createMessage(message)
-                navigate(`/`);
-                break;
-            default:
-                setComponent(null);
-        }
-    }
+    const sayHi = () => {
+        createMessage(message);
+        navigate(`/`);
+    };
 
     useEffect(() => {
         fetchUser();
-        setComponent(<UserProfile userInfo={userInfo}/>)
     }, [isLoading]);
 
-    return <>
-        {userInfo &&
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                <UserBanner user={userInfo}/>
-                <UserFilterTabs loadComponent={loadComponent} userInfo={userInfo}/>
-                {component}
-            </div>
-        }
-    </>
-}
+    const Component = COMPONENTS[componentName];
+
+    return (
+        <>
+            {userInfo && (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <UserBanner user={userInfo} />
+                    <UserFilterTabs setComponentName={setComponentName} sayHi={sayHi} userInfo={userInfo} />
+                    {Component && <Component userInfo={userInfo} />}
+                </div>
+            )}
+        </>
+    );
+};
 
 export default UserDetailScreen;

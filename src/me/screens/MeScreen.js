@@ -5,39 +5,32 @@ import Moments from "../../moments/components/Moments";
 import UserBanner from "../components/profile/UserBanner/UserBanner";
 import UserFilterTabs from "../components/profile/UserFilterTabs/UserFilterTabs";
 
-const MeScreen = () => {
-    const {userInfo, isLoading, fetchUser} = useUser();
+const COMPONENTS = {
+    profile: UserProfile,
+    moments: Moments,
+};
 
-    const [component, setComponent] = useState(null);
-    const loadComponent = (componentName) => {
-        switch (componentName) {
-            case 'profile':
-                setComponent(<UserProfile userInfo={userInfo}/>);
-                break;
-            case 'moments':
-                setComponent(<Moments/>);
-                break;
-            default:
-                setComponent(null);
-        }
-    }
+const MeScreen = () => {
+    const { userInfo, isLoading, fetchUser } = useUser();
+    const [componentName, setComponentName] = useState('profile');
 
     useEffect(() => {
         fetchUser();
-        setComponent(<UserProfile userInfo={userInfo}/>)
     }, [isLoading]);
+
+    const Component = COMPONENTS[componentName];
 
     return (
         <>
-            {userInfo &&
-                <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
-                    <UserBanner user={userInfo}/>
-                    <UserFilterTabs loadComponent={loadComponent} userInfo={userInfo}/>
-                    {component}
+            {userInfo && (
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <UserBanner user={userInfo} />
+                    <UserFilterTabs setComponentName={setComponentName} userInfo={userInfo} />
+                    {Component && <Component userInfo={userInfo} />}
                 </div>
-            }
+            )}
         </>
     );
-}
+};
 
 export default MeScreen;

@@ -1,0 +1,52 @@
+.user-profile-avatar {
+    width: 130px !important;
+    height: 130px !important;
+    border: 2px solid #7B1FA2 !important;
+    position: absolute !important;
+    bottom: -40px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}
+
+.user-profile-name {
+    line-height: 1.2 !important;
+    color: #7B1FA2 !important;
+    font-weight: bold !important;
+    text-align: center !important;
+    font-size: 30px !important;
+}
+
+.user-profile-latest-message {
+    line-height: 1.2 !important;
+    color: #000000DB !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}
+
+.user-profile-another-line-of-text {
+    line-height: 1.2 !important;
+    color: #000000DB !important;
+    font-weight: bold !important;
+    text-align: center !important;
+}
+
+.user-profile-banner-box {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+}
+
+.user-profile-banner-box-inner {
+    width: 100% !important;
+    height: 200px !important;
+    background-color: #f0f0f0 !important;
+    position: relative !important;
+}
+
+.user-profile-banner-box-inner-absolute {
+    position: absolute !important;
+    bottom: 100px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+}

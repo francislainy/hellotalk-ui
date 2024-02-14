@@ -2,6 +2,13 @@ import {useState, useEffect} from 'react';
 import {getUser} from "../../api/api";
 import {USER_ID} from "../../constants/constants";
 import avatarImage from '../../images/avatar.png'
+import UserProfile from "../components/profile/UserProfile/UserProfile";
+import Moments from "../../moments/components/Moments";
+
+const COMPONENTS = {
+    profile: UserProfile,
+    moments: Moments,
+};
 
 export const useUser = (id = USER_ID) => {
     const [userInfo, setUserInfo] = useState({
@@ -17,6 +24,7 @@ export const useUser = (id = USER_ID) => {
     });
 
     const [isLoading, setIsLoading] = useState(true)
+    const [componentName, setComponentName] = useState('profile');
 
     const fetchUser = async () => {
         try {
@@ -46,5 +54,7 @@ export const useUser = (id = USER_ID) => {
         fetchUser();
     }, [id]); // Fetch user when component mounts or id changes
 
-    return {userInfo, isLoading, fetchUser};
+    const Component = COMPONENTS[componentName];
+
+    return {userInfo, isLoading, fetchUser, componentName, setComponentName, Component};
 }

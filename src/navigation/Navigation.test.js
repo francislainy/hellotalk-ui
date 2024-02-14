@@ -4,9 +4,8 @@ import '@testing-library/jest-dom/extend-expect';
 import {BrowserRouter, Route, Router} from 'react-router-dom';
 import Navigation from './Navigation';
 import Moments from "../screen/Moments";
-import UserList from "../screen/UserList.js";
 import Live from "../screen/Live";
-import Me from "../screen/Me";
+import MeScreen from "../screen/MeScreen";
 import Home from "../screen/Home";
 
 test('renders navigation links', () => {
@@ -34,7 +33,7 @@ test('renders navigation links', () => {
     const liveLinkElement = screen.getByText(/Live/i);
     expect(liveLinkElement).toBeInTheDocument();
 
-    const meLinkElement = screen.getByText(/Me/i);
+    const meLinkElement = screen.getByText(/MeScreen/i);
     expect(meLinkElement).toBeInTheDocument();
 });
 

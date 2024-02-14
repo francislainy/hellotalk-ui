@@ -5,7 +5,7 @@ import HomeScreen from '../hellotalk/screens/HomeScreen';
 import ConnectScreen from '../connect/screens/ConnectScreen';
 import LiveScreen from '../live/screens/LiveScreen';
 // import MeScreen from '../me/screens/MeScreen'; //todo: fix this - it's causing a loop - 14/02/2024
-import MeScreen from '../me/components/profile/Me/Me';
+import MeScreen from '../me/screens/MeScreen';
 import MomentsScreen from '../moments/screens/MomentsScreen';
 import CustomAppBar from "../AppBar";
 import AddMoment from "../moments/components/momentMain/AddMoment";

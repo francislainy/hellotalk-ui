@@ -1,10 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import avatarImage from '../../../../images/avatar.png'
+import UserContext from "../../../contexts/UserContext";
 
-const UserProfileBanner = ({ user }) => {
+const UserProfileBanner = () => {
+
+    const { user } = useContext(UserContext);
+
     return (
         <Box display="flex" flexDirection="column" alignItems="center" width="100%">
             <Box width="100%" height={200} bgcolor="#f0f0f0" position="relative">
@@ -22,7 +26,7 @@ const UserProfileBanner = ({ user }) => {
 const UserProfileAvatar = ({ user }) => {
     return (
         <Avatar
-            alt={user.name}
+            alt={user?.name}
             src={avatarImage}
             sx={{ width: 130, height: 130, border: '2px solid #7B1FA2', position: 'absolute', bottom: -40, left: '50%', transform: 'translateX(-50%)' }}
         />
@@ -32,7 +36,7 @@ const UserProfileAvatar = ({ user }) => {
 const UserProfileName = ({ user }) => {
     return (
         <Typography variant="subtitle1" gutterBottom sx={{ lineHeight: 1.2, color: '#7B1FA2', fontWeight: 'bold', textAlign: 'center', fontSize: '30px' }}>
-            {user.name}
+            {user?.name}
         </Typography>
     );
 };
@@ -40,7 +44,7 @@ const UserProfileName = ({ user }) => {
 const UserProfileLatestMessage = ({ user }) => {
     return (
         <Typography variant="body2" gutterBottom sx={{ lineHeight: 1.2, color: '#000000DB', fontWeight: 'bold', textAlign: 'center' }}>
-            {user.latestMessage}
+            {user?.latestMessage}
         </Typography>
     );
 };

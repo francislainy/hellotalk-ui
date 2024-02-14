@@ -4,7 +4,7 @@ export const useUserItem = (user, handleCreateFollowship, handleDeleteFollowship
     const [followButtonText, setFollowButtonText] = useState('Follow');
 
     useEffect(() => {
-        const followship = followships.find(followship => followship.userToId === user.id);
+        const followship = followships?.find(followship => followship.userToId === user.id);
         setFollowButtonText(followship ? 'Following' : 'Follow');
     }, [followships]);
 

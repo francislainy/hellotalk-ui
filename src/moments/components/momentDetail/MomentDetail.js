@@ -13,11 +13,7 @@ const MomentDetail = ({moment, isEditing, updatedContent, setUpdatedContent, han
     const handleLikeClick = async (e) => {
         e.stopPropagation();
         try {
-            if (isLiked) {
-                await unlikeMoment(moment.id);
-            } else {
-                await likeMoment(moment.id);
-            }
+            isLiked ? await unlikeMoment(moment.id) : await likeMoment(moment.id);
             setIsLiked(!isLiked);
         } catch (error) {
             alert(error);

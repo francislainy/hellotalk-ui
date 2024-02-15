@@ -1,13 +1,12 @@
 import React from 'react';
-
-import useMoments from '../hooks/useMoments';
 import MomentList from "./momentMain/MomentList";
+import MomentProvider from "../provider/MomentProvider";
 
 const Moments = () => {
-    const {moments} = useMoments('');
-
     return (
-        <MomentList moments={moments}/>
+        <MomentProvider>
+            <MomentList/>
+        </MomentProvider>
     );
 }
 export default Moments;

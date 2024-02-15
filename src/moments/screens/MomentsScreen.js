@@ -14,9 +14,7 @@ const MomentScreen = () => {
         <MomentProvider>
             <Box sx={{display: 'grid', justifyContent: 'center', marginTop: '20px'}}>
                 <MomentFilterSelector fetchMoments={fetchMoments}/>
-                <Box>
-                    <MomentList/>
-                </Box>
+                <MomentList/>
                 <FabAddMoment/>
             </Box>
         </MomentProvider>

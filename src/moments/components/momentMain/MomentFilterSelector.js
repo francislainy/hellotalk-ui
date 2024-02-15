@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Box, Button} from "@mui/material";
 import colors from '../../../colors/colors';
+import MomentContext from "../../contexts/MomentContext";
 
 const buttons = ['Recent', 'Best', 'Learn', 'Nearby', 'Following', 'Help', 'Classmates', 'Voice']
 
@@ -15,20 +16,23 @@ const buttonToParamMap = {
     'Voice': 'best_param',
 };
 
-const MomentFilterSelector = ({fetchMoments}) => (
-    <Box sx={{'& > :not(style)': {m: 1}, display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
-        {buttons.map((button) => (
-            <Button
-                key={button}
-                variant="contained"
-                sx={{color: colors.white, backgroundColor: colors.primary}}
-                onClick={() => fetchMoments(buttonToParamMap[button])}
-                TouchRippleProps={{style: {color: '#7B1FA2'}}}
-            >
-                {button}
-            </Button>
-        ))}
-    </Box>
-);
+const MomentFilterSelector = () => {
+    const {fetchMoments} = useContext(MomentContext);
+    return (
+        <Box sx={{'& > :not(style)': {m: 1}, display: 'flex', justifyContent: 'center', flexWrap: 'wrap'}}>
+            {buttons.map((button) => (
+                <Button
+                    key={button}
+                    variant="contained"
+                    sx={{color: colors.white, backgroundColor: colors.primary}}
+                    onClick={() => fetchMoments(buttonToParamMap[button])}
+                    TouchRippleProps={{style: {color: '#7B1FA2'}}}
+                >
+                    {button}
+                </Button>
+            ))}
+        </Box>
+    )
+};
 
 export default MomentFilterSelector;

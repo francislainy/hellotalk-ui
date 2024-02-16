@@ -1,7 +1,7 @@
 import React from 'react';
 import {Box, Button, TextField} from '@mui/material';
-import colors from "../../../colors/colors";
-import {useAddMoment} from "../../hooks/useAddMoment";
+import {useAddMoment} from "../../../hooks/useAddMoment";
+import './AddMoment.css'; // Import your CSS file here
 
 const AddMoment = () => {
     const {
@@ -11,7 +11,7 @@ const AddMoment = () => {
     } = useAddMoment();
 
     return (
-        <Box sx={{display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 2, marginTop: 4}}>
+        <Box className="add-moment">
             <TextField
                 multiline
                 rows={4}
@@ -19,18 +19,13 @@ const AddMoment = () => {
                 placeholder="Add your moment..."
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                sx={{width: '75%'}}
+                className="text-field"
             />
             <Button
                 variant="contained"
                 color="primary"
                 onClick={handleSend}
-                sx={{
-                    backgroundColor: colors.primary,
-                    '&:hover': {
-                        backgroundColor: colors.darkPurple,
-                    }
-                }}
+                className="button"
             >
                 Send
             </Button>

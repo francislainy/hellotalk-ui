@@ -1,0 +1,19 @@
+.add-moment {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+    margin-top: 4px ;
+}
+
+.text-field {
+    width: 75%;
+}
+
+.button {
+    background-color:  #7B1FA2;
+}
+
+.button:hover {
+    background-color: #5a0f73 ; /* Replace with your dark purple color */
+}

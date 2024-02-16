@@ -1,5 +1,5 @@
 import React from 'react';
-import NoComments from "../NoComments";
+import NoComments from "../NoComments/NoComments";
 import CommentCard from "./CommentCard";
 
 const CommentList = ({comments, momentId, fetchComments}) => {

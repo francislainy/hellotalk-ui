@@ -1,0 +1,21 @@
+.moment-filter-selector {
+    display: flex !important;
+    justify-content: center !important;
+    flex-wrap: wrap !important;
+
+    > *:not(style) {
+        margin: 1rem !important; /* Assuming 'm: 1' refers to margin */
+    }
+}
+
+.moment-filter-button {
+    color: white !important;
+    background-color: #7B1FA2 !important;
+}
+
+/* Specific style for TouchRippleProps, if needed */
+.moment-filter-button:hover::after {
+    /* Adjust color and other properties as needed */
+    color: #5a0f73 !important;
+    background-color: #5a0f73 !important;
+}

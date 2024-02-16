@@ -1,11 +1,11 @@
 /* FabAddMoment.css */
 .fab-add-moment {
-    position: fixed;
-    bottom: 16px;
-    right: 16px;
-    background-color: #7B1FA2;
+    position: fixed !important;
+    bottom: 16px !important;
+    right: 16px !important;
+    background-color: #7B1FA2 !important;
 }
 
 .fab-add-moment:hover {
-    background-color: #5a0f73;
+    background-color: #5a0f73 !important;
 }

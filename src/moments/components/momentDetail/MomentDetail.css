@@ -1,5 +1,5 @@
 .moment_item__like_icon {
-    cursor: pointer;
+    cursor: pointer !important;
     box-shadow: none !important;
 }
 
@@ -9,4 +9,45 @@
 
 .moment_item__like_icon--liked {
     color: #9C27B0 !important;
+}
+
+.moment-detail {
+    background-color: white !important;
+    width: 100% !important;
+    margin: 2rem 0 !important;
+    box-shadow: none !important;
+}
+
+.moment-detail__content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.moment-detail__edit-input {
+    width: 75% !important;
+    text-align: center !important;
+}
+
+.moment-detail__save-button {
+    margin-top: 1rem !important;
+    background-color: #7B1FA2 !important;
+}
+
+.moment-detail__actions {
+    display: flex !important;
+    align-items: center !important;
+    margin-top: 1rem !important;
+}
+
+.moment-detail__like-icon {
+    cursor: pointer !important;
+}
+
+.moment-detail__like-icon--liked {
+    color: #9C27B0 !important;
+}
+
+.moment-detail__stats {
+    margin-left: 0.5rem !important;
 }

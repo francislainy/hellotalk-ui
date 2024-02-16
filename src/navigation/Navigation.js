@@ -1,12 +1,12 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import MomentDetailScreen from '../moments/screens/MomentDetailScreen';
+import MomentDetailScreen from '../moments/screens/MomentDetailScreen/MomentDetailScreen';
 import HomeScreen from '../hellotalk/screens/HomeScreen';
 import ConnectScreen from '../connect/screens/ConnectScreen';
 import LiveScreen from '../live/screens/LiveScreen';
 // import MeScreen from '../me/screens/MeScreen'; //todo: fix this - it's causing a loop - 14/02/2024
 import MeScreen from '../me/screens/MeScreen';
-import MomentsScreen from '../moments/screens/MomentsScreen';
+import MomentsScreen from '../moments/screens/MomentScreen/MomentsScreen';
 import CustomAppBar from "../AppBar";
 import AddMoment from "../moments/components/momentMain/AddMoment/AddMoment";
 import UserDetailScreen from "../me/screens/UserDetailScreen";

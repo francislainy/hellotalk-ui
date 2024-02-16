@@ -1,13 +1,12 @@
 import React from 'react';
 import {Box, Card, CardContent} from '@mui/material';
 
-import CreateComment from '../components/comments/CreateComment';
-import {USER_ID} from "../../constants/constants";
-import colors from "../../colors/colors";
-import CommentList from "../components/comments/CommentList";
-import MomentDetail from "../components/momentDetail/MomentDetail";
-import MomentActions from "../components/momentDetail/MomentActions";
-import useMomentDetail from "../hooks/useMomentDetail";
+import CreateComment from '../../components/comments/CreateComment';
+import {USER_ID} from '../../../constants/constants';
+import CommentList from '../../components/comments/CommentList';
+import MomentDetail from '../../components/momentDetail/MomentDetail';
+import MomentActions from '../../components/momentDetail/MomentActions';
+import useMomentDetail from '../../hooks/useMomentDetail';
 
 import './MomentDetailScreen.css';
 
@@ -27,20 +26,21 @@ const MomentDetailScreen = () => {
         setUpdatedContent,
         setNewComment,
         id,
-        fetchComments
+        fetchComments,
     } = useMomentDetail();
 
     return (
-        <Box sx={{display: 'flex', justifyContent: 'center', minHeight: '100vh'}}>
-            <Card sx={{width: '80%', marginBottom: 4, marginTop: 4, backgroundColor: colors.white, boxShadow: 'none'}}>
+        <Box className="moment-detail-screen">
+            <Card className="moment-detail-card">
                 <CardContent>
-                    <Box sx={{p: 2, display: 'flex', flexDirection: 'column', alignItems: 'flex-end'}}>
+                    <Box className="moment-detail-content">
                         <MomentActions
                             momentUserId={moment.userId}
                             currentUserId={USER_ID}
                             isEditing={isEditing}
                             handleUpdate={handleUpdate}
                             handleDelete={handleDelete}
+                            className="moment-detail-actions" // Add class name
                         />
                         <MomentDetail
                             moment={moment}
@@ -49,16 +49,25 @@ const MomentDetailScreen = () => {
                             setUpdatedContent={setUpdatedContent}
                             handleSave={handleSave}
                             handleCommentIconClick={handleCommentIconClick}
+                            className="moment-detail" // Add class name
                         />
-                        <Box className="moment_detail_screen__commentsSection" sx={{width: '100%'}}>
+                        <Box className="moment-detail-comments-section">
                             <CreateComment
                                 isCommenting={isCommenting}
                                 newComment={newComment}
                                 setNewComment={setNewComment}
                                 handleSaveComment={handleSaveComment}
+                                className="create-comment" // Add class name
                             />
-                            {comments.size > 0 && <h2 className="comments_header">Comments</h2> }
-                            <CommentList comments={comments} momentId={id} fetchComments={fetchComments}/>
+                            {comments.size > 0 && (
+                                <h2 className="comments_header">Comments</h2> // Use the existing class name
+                            )}
+                            <CommentList
+                                comments={comments}
+                                momentId={id}
+                                fetchComments={fetchComments}
+                                className="comment-list" // Add class name
+                            />
                         </Box>
                     </Box>
                 </CardContent>

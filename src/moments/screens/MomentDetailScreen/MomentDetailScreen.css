@@ -1,0 +1,38 @@
+.moment_detail_screen__commentsSection {
+    display: flex;
+    flex-direction: column;
+}
+
+.comments_header {
+    align-self: center;
+}
+
+.moment-detail-screen {
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.moment-detail-card {
+    width: 80%;
+    margin-bottom: 4rem;
+    margin-top: 4rem;
+    background-color: white;
+    box-shadow: none;
+}
+
+.moment-detail-content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+/* Specific styles for other components as needed */
+.moment-detail-comments-section {
+    width: 100%;
+}
+
+/* Existing styles from previous CSS file */
+.moment_detail_screen__commentsSection { /* ... */ }
+.comments_header { /* ... */ }

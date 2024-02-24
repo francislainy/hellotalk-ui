@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'http://localhost:8081/api/v1/ht/',
+    baseURL: 'https://hellotalk-production.up.railway.app/api/v1/ht/',
     headers: {
         'Accept': 'application/json, application/javascript, text/javascript, text/json',
         'Content-Type': 'application/json',
